@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!-- Hilfe-Seiten fuer die ESC-Menue-Hilfe (Reiter "Hilfe").
+     Struktur nach shared/xml/schema/helpLine.xsd. Texte per $l10n_ aus modDesc.
+     Symbole aus sdk/xmlDoku/helpLine.xml. -->
+<helpLines>
+    <category title="$l10n_fa_help_cat">
+
+        <page title="$l10n_fa_help_p1_title" iconSliceId="farmingBasics_map">
+            <paragraph>
+                <text text="$l10n_fa_help_p1_intro" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p1_open_t" />
+                <text text="$l10n_fa_help_p1_open" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p1_tabs_t" />
+                <text text="$l10n_fa_help_p1_tabs" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p1_fields_t" />
+                <text text="$l10n_fa_help_p1_fields" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p1_storage_t" />
+                <text text="$l10n_fa_help_p1_storage" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p1_animals_t" />
+                <text text="$l10n_fa_help_p1_animals" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p1_finance_t" />
+                <text text="$l10n_fa_help_p1_finance" />
+            </paragraph>
+        </page>
+
+        <page title="$l10n_fa_help_p4_title" iconSliceId="firstSteps_contracts">
+            <paragraph>
+                <text text="$l10n_fa_help_p4_intro" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p4_fields_t" />
+                <text text="$l10n_fa_help_p4_fields" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p4_farm_t" />
+                <text text="$l10n_fa_help_p4_farm" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p4_machines_t" />
+                <text text="$l10n_fa_help_p4_machines" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p4_plan_t" />
+                <text text="$l10n_fa_help_p4_plan" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p4_use_t" />
+                <text text="$l10n_fa_help_p4_use" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p4_mp_t" />
+                <text text="$l10n_fa_help_p4_mp" />
+            </paragraph>
+        </page>
+
+        <page title="$l10n_fa_help_p5_title" iconSliceId="crops_grainCrops">
+            <paragraph>
+                <text text="$l10n_fa_help_p1_crops" />
+            </paragraph>
+        </page>
+
+        <page title="$l10n_fa_help_p2_title" iconSliceId="icon_yieldBoost">
+            <paragraph>
+                <text text="$l10n_fa_help_p2_intro" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p2_sow_t" />
+                <text text="$l10n_fa_help_p2_sow" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p2_yield_t" />
+                <text text="$l10n_fa_help_p2_yield" />
+            </paragraph>
+        </page>
+
+        <page title="$l10n_fa_help_p3_title" iconSliceId="basicEconomy_productionChains">
+            <paragraph>
+                <text text="$l10n_fa_help_p3_intro" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p3_preset_t" />
+                <text text="$l10n_fa_help_p3_preset" />
+            </paragraph>
+            <paragraph>
+                <title text="$l10n_fa_help_p3_mp_t" />
+                <text text="$l10n_fa_help_p3_mp" />
+            </paragraph>
+        </page>
+
+    </category>
+</helpLines>

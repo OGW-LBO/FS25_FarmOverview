@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!--
+    Betriebsuebersicht als eigene Seite im ESC-Menue (ersetzt das fruehere
+    Strg+F7-Fenster). Geladen als Frame (g_gui:loadGui(..., true)) und per
+    g_inGameMenu:addPage eingehaengt (TabbedMenu.lua:780).
+
+    Aufbau wie die Einstellungsseite des Spiels (Masse aus sdk/xmlDoku/guiProfiles.xml):
+      fs25_menuContainer                1550px breit, Hoehe = Bildschirm - 250px
+      fs25_menuHeaderPanel              Kopfzeile mit Symbol und Titel (ueber dem Container)
+      fs25_subCategorySelectorTabbedBox Bereichs-Reiter oben (57px)
+      fs25_subCategorySelectorTabbedContainer  Inhalt darunter (Hoehe - 80px)
+
+    Der Inhalt ist 1:1 der des frueheren Fensters: eine SmoothList mit sechs
+    Spalten fuer die Bereiche 1-6 und ein ScrollingLayout mit nativen
+    Auswahlfeldern fuer die Einstellungen. Die IDs sind unveraendert, deshalb
+    laeuft die bestehende Logik aus FruchtfolgeAdvisorDialog.lua weiter.
+-->
+<GUI name="FarmOverviewPage">
+    <GuiElement profile="fs25_menuContainer">
+        <GuiElement profile="fs25_menuHeaderPanel">
+            <Bitmap profile="fs25_menuHeaderIconBg">
+                <Bitmap profile="faMenuHeaderIcon" id="faHeaderIcon" />
+            </Bitmap>
+            <Text profile="fs25_menuHeaderTitle" id="dialogTitleElement" text="$l10n_fa_title" />
+        </GuiElement>
+
+        <!-- Bereichs-Reiter -->
+        <BoxLayout profile="fs25_subCategorySelectorTabbedBox" id="faTabBox">
+            <!-- Reihenfolge: Aufgaben zuerst (Startseite), dann die Inhalte,
+                 hinten die Einstellungen (inkl. Fruechte-Auswahl).
+                 Die IDs (btnTabN) sind die Bereichs-Indizes, nicht die Position. -->
+            <Button profile="fs25_subCategorySelectorTabbedTab" text="$l10n_fa_tab_tasks" onClick="onClickTabReport" id="btnTab5">
+                <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background" />
+            </Button>
+            <Button profile="fs25_subCategorySelectorTabbedTab" text="$l10n_fa_tab_fields" onClick="onClickTabFelder" id="btnTab1">
+                <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background" />
+            </Button>
+            <Button profile="fs25_subCategorySelectorTabbedTab" text="$l10n_fa_tab_animals" onClick="onClickTabTiere" id="btnTab3">
+                <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background" />
+            </Button>
+            <Button profile="fs25_subCategorySelectorTabbedTab" text="$l10n_fa_tab_production" onClick="onClickTabProduktion" id="btnTab4">
+                <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background" />
+            </Button>
+            <Button profile="fs25_subCategorySelectorTabbedTab" text="$l10n_fa_tab_storage" onClick="onClickTabLager" id="btnTab2">
+                <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background" />
+            </Button>
+            <Button profile="fs25_subCategorySelectorTabbedTab" text="$l10n_fa_tab_finance" onClick="onClickTabFinanzen" id="btnTab8">
+                <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background" />
+            </Button>
+            <Button profile="fs25_subCategorySelectorTabbedTab" text="$l10n_fa_tab_settings" onClick="onClickTabSettings" id="btnTab7">
+                <ThreePartBitmap profile="fs25_subCategorySelectorTabbedTabBg" name="background" />
+            </Button>
+        </BoxLayout>
+
+        <GuiElement profile="fs25_subCategorySelectorTabbedContainer" id="faContent">
+            <!-- Infozeile: Knappheiten (Felder), Zaehler + Bedienhinweis (Aufgaben),
+                 Bedienhinweis (Fruechte). setTab() blendet sie je Bereich ein. -->
+            <Text profile="faDShortage" id="faShortage" position="15px -12px" size="1490px 24px" visible="false" />
+
+            <!-- Liste und Scrollbalken in einem gemeinsamen Rahmen (Muster
+                 FS25_CropRotation): fs25_listSliderBox haengt sich mit
+                 anchorStretchingYRight an den rechten Rand dieses Rahmens
+                 (21px daneben) und ist so hoch wie er. Ein with-Attribut am
+                 Element wertet das Spiel NICHT aus - daran lag der fehlende
+                 Balken (er stand ausserhalb des Bildschirms). -->
+            <GuiElement profile="faListFrame" position="15px -44px" size="1490px 680px">
+                <SmoothList profile="faDlgList" id="faList" position="0px 0px" size="1490px 680px" onClick="onListClick" onDoubleClick="onListDoubleClick">
+                    <ListItem profile="faDlgRow" name="rowTemplate">
+                        <Text profile="faDColS" name="colS" />
+                        <Text profile="faDColA" name="colA" />
+                        <Text profile="faDColB" name="colB" />
+                        <Text profile="faDColC" name="colC" />
+                        <Text profile="faDColD" name="colD" />
+                        <Text profile="faDColE" name="colE" />
+                        <Text profile="faDColF" name="colF" />
+                    </ListItem>
+                </SmoothList>
+
+                <ThreePartBitmap profile="fs25_listSliderBox" id="faListSliderBox">
+                    <Slider profile="fs25_listSlider" dataElementId="faList" id="faListSlider" />
+                </ThreePartBitmap>
+            </GuiElement>
+
+            <!-- Einstellungen: native Auswahlfelder, standardmaessig unsichtbar -->
+            <GuiElement profile="faListFrame" position="15px -20px" size="1490px 700px">
+            <ScrollingLayout profile="fs25_settingsLayout" id="faSettingsLayout" visible="false">
+
+                <Bitmap profile="faSetRow">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="chkEnabled" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_enabled" />
+                </Bitmap>
+
+                <Bitmap profile="faSetRow">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="chkAffectYield" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_affectyield" />
+                </Bitmap>
+
+                <!-- Welche Feldarbeiten im Bereich Aufgaben auftauchen. Nicht jeder
+                     walzt oder kalkt; AUS laesst die Aufgabe komplett weg. -->
+                <Text profile="fs25_settingsSectionHeader" name="sectionHeader" text="$l10n_fa_set_section_tasks" />
+
+                <Bitmap profile="faSetRow">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="chkTaskRoll" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_task_roll" />
+                </Bitmap>
+
+                <Bitmap profile="faSetRow">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="chkTaskWeeds" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_task_weeds" />
+                </Bitmap>
+
+                <Bitmap profile="faSetRow">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="chkTaskFert" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_task_fert" />
+                </Bitmap>
+
+                <Bitmap profile="faSetRow">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="chkTaskLime" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_task_lime" />
+                </Bitmap>
+
+                <Bitmap profile="faSetRow">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="chkTaskPlow" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_task_plow" />
+                </Bitmap>
+
+                <Text profile="fs25_settingsSectionHeader" name="sectionHeader" text="$l10n_fa_set_section_values" />
+
+                <Bitmap profile="faSetRow">
+                    <MultiTextOption profile="fs25_settingsMultiTextOption" onClick="onClickMultiOption" id="optPreset" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_preset" />
+                </Bitmap>
+
+                <Bitmap profile="faSetRow">
+                    <MultiTextOption profile="fs25_settingsMultiTextOption" onClick="onClickMultiOption" id="optStartHealth" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_starthealth" />
+                </Bitmap>
+
+                <Bitmap profile="faSetRow">
+                    <MultiTextOption profile="fs25_settingsMultiTextOption" onClick="onClickMultiOption" id="optYieldMin" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_yieldmin" />
+                </Bitmap>
+
+                <Bitmap profile="faSetRow">
+                    <MultiTextOption profile="fs25_settingsMultiTextOption" onClick="onClickMultiOption" id="optYieldMax" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_yieldmax" />
+                </Bitmap>
+
+                <Bitmap profile="faSetRow">
+                    <MultiTextOption profile="fs25_settingsMultiTextOption" onClick="onClickMultiOption" id="optHealthScale" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_healthscale" />
+                </Bitmap>
+
+                <!-- Fruechte fuer die Empfehlungen: fest angelegte Zeilen (das Spiel
+                     richtet die AN/AUS-Schalter beim Laden selbst ein; geklonte
+                     Schalter muessten intern neu verdrahtet werden). Belegt werden
+                     so viele, wie die Karte Fruechte hat, der Rest ist ausgeblendet. -->
+                <Text profile="fs25_settingsSectionHeader" name="sectionHeader" text="$l10n_fa_set_section_crops" />
+                <Bitmap profile="faSetRow" id="cropRow1" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt1" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle1" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow2" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt2" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle2" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow3" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt3" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle3" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow4" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt4" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle4" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow5" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt5" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle5" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow6" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt6" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle6" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow7" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt7" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle7" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow8" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt8" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle8" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow9" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt9" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle9" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow10" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt10" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle10" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow11" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt11" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle11" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow12" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt12" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle12" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow13" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt13" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle13" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow14" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt14" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle14" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow15" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt15" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle15" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow16" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt16" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle16" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow17" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt17" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle17" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow18" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt18" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle18" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow19" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt19" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle19" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow20" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt20" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle20" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow21" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt21" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle21" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow22" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt22" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle22" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow23" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt23" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle23" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow24" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt24" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle24" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow25" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt25" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle25" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow26" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt26" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle26" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow27" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt27" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle27" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow28" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt28" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle28" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow29" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt29" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle29" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow30" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt30" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle30" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow31" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt31" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle31" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow32" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt32" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle32" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow33" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt33" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle33" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow34" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt34" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle34" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow35" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt35" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle35" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow36" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt36" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle36" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow37" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt37" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle37" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow38" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt38" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle38" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow39" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt39" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle39" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow40" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt40" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle40" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow41" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt41" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle41" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow42" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt42" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle42" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow43" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt43" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle43" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow44" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt44" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle44" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow45" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt45" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle45" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow46" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt46" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle46" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow47" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt47" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle47" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow48" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt48" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle48" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow49" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt49" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle49" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow50" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt50" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle50" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow51" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt51" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle51" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow52" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt52" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle52" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow53" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt53" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle53" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow54" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt54" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle54" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow55" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt55" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle55" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow56" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt56" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle56" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow57" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt57" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle57" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow58" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt58" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle58" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow59" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt59" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle59" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow60" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt60" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle60" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow61" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt61" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle61" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow62" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt62" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle62" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow63" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt63" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle63" />
+                </Bitmap>
+                <Bitmap profile="faSetRow" id="cropRow64" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="cropOpt64" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" id="cropTitle64" />
+                </Bitmap>
+
+            </ScrollingLayout>
+            </GuiElement>
+        </GuiElement>
+    </GuiElement>
+
+    <GUIProfiles>
+        <!-- Symbol in der Kopfzeile: dasselbe weisse Glyph wie der Menue-Reiter,
+             Textur zur Laufzeit per setImageFilename (Muster FS25_CropRotation). -->
+        <Profile name="faMenuHeaderIcon" extends="baseReference" with="anchorMiddleCenter">
+            <size value="50px 50px" />
+            <imageUVs value="0 0 1 1" />
+            <imageColor value="$preset_fs25_colorMainDark" />
+            <imageSliceId value="noSlice" />
+        </Profile>
+
+        <!-- Kompakte Einstellungs-Zeile, erbt vom Container der nativen Auswahlfelder -->
+        <Profile name="faSetRow" extends="fs25_multiTextOptionContainer">
+            <size value="1400px 42px" />
+        </Profile>
+
+        <Profile name="faListFrame" extends="emptyPanel" with="anchorTopLeft pivotTopLeft" />
+
+        <Profile name="faDlgList" extends="emptyPanel" with="anchorTopLeft pivotTopLeft">
+            <itemizedScrollDelta value="1" />
+            <listItemSpacing value="3px" />
+            <!-- false: sonst meldet die Liste einen Einzelklick nur als Auswahl
+                 und ruft onClick gar nicht auf (SmoothListElement.lua:1566) -
+                 dann reagierten Aufgaben und Fruechte erst auf Doppelklick. -->
+            <selectOnClick value="false" />
+            <showHighlights value="true" />
+        </Profile>
+        <Profile name="faDlgRow" extends="baseReference" with="anchorTopStretchingX alternating">
+            <height value="40px" />
+            <imageColor value="$preset_colorTransparent" />
+            <alternateBackgroundColor value="$preset_fs25_colorGreyDark_50" />
+            <imageSelectedColor value="$preset_fs25_colorGrey_20" />
+        </Profile>
+
+        <!-- Spalten fuer 1490px Listenbreite -->
+        <Profile name="faDColA" extends="fs25_textDefault" with="anchorMiddleLeft">
+            <position value="15px 0px" /><width value="470px" /><textSize value="16px" />
+        </Profile>
+        <Profile name="faDColB" extends="fs25_textDefault" with="anchorMiddleLeft">
+            <position value="500px 0px" /><width value="170px" /><textSize value="16px" /><textAlignment value="right" />
+        </Profile>
+        <Profile name="faDColC" extends="fs25_textDefault" with="anchorMiddleLeft">
+            <position value="690px 0px" /><width value="170px" /><textSize value="16px" /><textAlignment value="right" />
+        </Profile>
+        <Profile name="faDColD" extends="fs25_textDefault" with="anchorMiddleLeft">
+            <position value="900px 0px" /><width value="300px" /><textSize value="16px" />
+        </Profile>
+        <Profile name="faDColE" extends="fs25_textDefault" with="anchorMiddleLeft">
+            <position value="1180px 0px" /><width value="200px" /><textSize value="16px" />
+        </Profile>
+        <Profile name="faDColF" extends="fs25_textDefault" with="anchorMiddleLeft">
+            <position value="1390px 0px" /><width value="95px" /><textSize value="16px" />
+        </Profile>
+        <!-- Abschnittstitel ueber die ganze Zeile (vorher in colA, abgeschnitten) -->
+        <Profile name="faDColS" extends="fs25_textDefault" with="anchorMiddleLeft">
+            <position value="15px 0px" /><width value="1460px" /><textSize value="16px" /><textBold value="true" />
+        </Profile>
+        <!-- Infozeile: absolut vom oberen Rand positioniert -> anchorTopLeft
+             (anchorMiddleLeft wuerde Y ab der Container-Mitte rechnen). -->
+        <Profile name="faDShortage" extends="fs25_textDefault" with="anchorTopLeft">
+            <textSize value="16px" />
+        </Profile>
+    </GUIProfiles>
+</GUI>

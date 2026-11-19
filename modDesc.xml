@@ -1,0 +1,1483 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<modDesc descVersion="115">
+    <author>OGW</author>
+    <version>1.1.0.0</version>
+    <title>
+        <en>Farm Overview</en>
+        <de>Betriebsübersicht</de>
+        <fr>Aperçu Exploitation</fr>
+    </title>
+    <description>
+        <en><![CDATA[Farm Overview puts your whole farm on one page of the ESC menu - fields, soil health, storage, animals, productions, open tasks and the crops of the map.
+
+TOGETHER WITH FARM ECONOMY
+Farm Overview works on its own. If the Farm Economy mod is installed as well, the additional Finances area shows the year comparison (net worth, income, expenses and result against the previous year).
+
+HOW TO USE
+Press ESC and open the Farm Overview page (the first tab). Switch areas with the tabs at the top:
+- TASKS: what the farm needs right now, sorted by urgency. Field work is grouped per field in the order you really do it - mulch stubble, plow, cultivate, lime, fertilize, sow, and while the crop grows weed control, rolling, fertilizing. One line per field shows the whole sequence and the crop to sow; a click opens the single steps. Further tasks: harvest, sow, roll, lime, fertilize, weeds, feed/water/straw, full manure/slurry/milk, stopped or full productions, full silos, damaged or empty machines, missing growing area and good prices. Finished work disappears by itself; click a task to take it over (your name shows for every player).
+- FIELDS: recommended next crop per field with rotation bonus, soil health and trend; fields that help against a running-low crop are marked. Click a field for its full ranking and a multi-season outlook.
+- ANIMALS: herds, age, feed demand with range, TMR ingredients.
+- PRODUCTION: recipes with inputs and outputs; empty inputs are flagged.
+- STORAGE: stock of every storage your farm owns, with capacity, monthly demand, range and market tips.
+- FINANCES (with the Farm Economy mod): net worth, balance, loan, income, expenses and result, each against the same period of the previous year.
+- SETTINGS: soil health, yield effect and presets, an ON/OFF switch for every crop of the loaded map (OFF removes it from the recommendations) and one for each optional field job - rolling, weed control, fertilizing, liming and plowing, so work your farm skips stays out of the task list.
+
+SOIL HEALTH
+Sowing is compared to the previous crop: a good rotation and legumes or grass raise soil health, monoculture lowers it, and the harvest yield follows it.
+
+Crop data is read from the loaded map, so custom map crops are covered. Multiplayer and dedicated server capable. The full guide is in the in-game help (ESC - Help - Farm Overview). PC/Mac only.]]></en>
+        <de><![CDATA[Die Betriebsübersicht bringt deinen ganzen Hof auf eine Seite im ESC-Menü - Felder, Bodengesundheit, Lager, Tiere, Produktionen, offene Aufgaben und die Früchte der Karte.
+
+ZUSAMMEN MIT AGRAR-ÖKONOMIE
+Die Betriebsübersicht läuft auch allein. Ist zusätzlich die Mod Agrar-Ökonomie (Farm Economy) installiert, zeigt der Bereich Finanzen den Jahresvergleich (Betriebsvermögen, Einnahmen, Ausgaben und Ergebnis gegen das Vorjahr).
+
+BEDIENUNG
+ESC drücken und die Seite Betriebsübersicht öffnen (der erste Reiter). Oben mit den Reitern den Bereich wechseln:
+- AUFGABEN: was der Hof jetzt braucht, nach Dringlichkeit sortiert. Feldarbeiten stehen je Feld in der Reihenfolge, in der man sie wirklich macht - Stoppel häckseln, pflügen, grubbern, kalken, düngen, bestellen, und während des Wachstums Unkraut, walzen, düngen. Eine Zeile je Feld zeigt die ganze Folge und die Frucht, die gesät werden soll; ein Klick öffnet die einzelnen Schritte. Weitere Aufgaben: ernten, bestellen, walzen, kalken, düngen, Unkraut, Futter/Wasser/Stroh, volle Mist-, Gülle- und Milchlager, stehende oder volle Produktionen, volle Silos, beschädigte oder leere Maschinen, fehlende Anbaufläche und gute Preise. Erledigte Arbeit verschwindet von selbst; per Klick übernimmst du eine Aufgabe (dein Name steht bei allen Mitspielern).
+- FELDER: empfohlene nächste Frucht je Feld mit Fruchtfolge-Bonus, Bodengesundheit und Trend; Felder, die gegen eine knappe Frucht helfen, sind markiert. Klick auf ein Feld zeigt die volle Rangliste und einen Weitblick über mehrere Saisons.
+- TIERE: Bestände, Alter, Futterbedarf mit Reichweite, TMR-Zutaten.
+- PRODUKTION: Rezepte mit Ein- und Ausgang; leere Eingänge werden markiert.
+- LAGER: Bestand aller eigenen Lager mit Maximal-Füllstand, Monatsbedarf, Reichweite und Markttipps.
+- FINANZEN (mit der Mod Agrar-Ökonomie): Betriebsvermögen, Konto, Kredit, Einnahmen, Ausgaben und Ergebnis, jeweils gegen denselben Zeitraum des Vorjahres.
+- EINSTELLUNGEN: Bodengesundheit, Ertragswirkung und Presets, ein AN/AUS-Schalter für jede Frucht der geladenen Karte (AUS nimmt sie aus den Empfehlungen) und einer für jede freiwillige Feldarbeit - Walzen, Unkraut, Düngen, Kalken und Pflügen bleiben damit auf Wunsch aus dem Aufgabenzettel.
+
+BODENGESUNDHEIT
+Die Aussaat wird mit der Vorfrucht verglichen: gute Fruchtfolge sowie Leguminosen oder Gras heben die Bodengesundheit, Monokultur senkt sie, und der Ernteertrag folgt ihr.
+
+Die Fruchtdaten kommen aus der geladenen Karte, eigene Kartenfrüchte sind also abgedeckt. Mehrspieler- und Dedicated-Server-fähig. Die ausführliche Anleitung steht in der Spielhilfe (ESC - Hilfe - Betriebsübersicht). Nur PC/Mac.]]></de>
+        <fr><![CDATA[Farm Overview réunit toute votre exploitation sur une page du menu ÉCHAP - champs, santé du sol, stockage, animaux, productions, tâches à faire et cultures de la carte.
+
+AVEC ÉCONOMIE AGRICOLE
+L'Aperçu de l'exploitation fonctionne seul. Si le mod Économie Agricole (Farm Economy) est aussi installé, la rubrique supplémentaire Finances affiche la comparaison annuelle (patrimoine net, revenus, dépenses et résultat par rapport à l'année précédente).
+
+UTILISATION
+Appuyez sur ÉCHAP et ouvrez la page Aperçu de l'exploitation (le premier onglet). Changez de rubrique avec les onglets du haut :
+- TÂCHES : ce dont l'exploitation a besoin maintenant, classé par urgence. Les travaux aux champs sont regroupés par champ dans l'ordre réel - broyer le chaume, labourer, déchaumer, chauler, fertiliser, semer, puis pendant la croissance désherber, rouler, fertiliser. Une ligne par champ montre toute la suite et la culture à semer ; un clic ouvre les étapes. Autres tâches : récolter, semer, rouler, chauler, fertiliser, désherber, fourrage/eau/paille, fumier, lisier et lait pleins, productions à l'arrêt ou pleines, silos pleins, machines abîmées ou vides, surface de culture manquante et bons prix. Le travail fait disparaît tout seul ; un clic prend une tâche (votre nom s'affiche pour tous les joueurs).
+- CHAMPS : culture suivante conseillée par champ avec bonus de rotation, santé du sol et tendance ; les champs qui aident contre une culture bientôt épuisée sont marqués. Un clic sur un champ affiche le classement complet et une projection sur plusieurs saisons.
+- ANIMAUX : cheptels, âge, besoin en fourrage avec autonomie, ingrédients de la ration (TMR).
+- PRODUCTION : recettes avec entrées et sorties ; les entrées vides sont signalées.
+- STOCKAGE : stock de tous vos stockages avec la capacité, besoin mensuel, autonomie et conseils de vente.
+- FINANCES (avec le mod Économie Agricole) : patrimoine net, solde, prêt, revenus, dépenses et résultat, comparés à la même période de l'année précédente.
+- RÉGLAGES : santé du sol, effet sur le rendement et préréglages, un interrupteur pour chaque culture de la carte chargée (désactivée, elle sort des recommandations) et un pour chaque travail facultatif - roulage, désherbage, fertilisation, chaulage et labour restent alors hors des tâches.
+
+SANTÉ DU SOL
+Le semis est comparé à la culture précédente : une bonne rotation ainsi que les légumineuses ou l'herbe améliorent la santé du sol, la monoculture la dégrade, et le rendement de la récolte la suit.
+
+Les données des cultures sont lues depuis la carte chargée, les cultures propres à une carte sont donc prises en compte. Compatible multijoueur et serveur dédié. Le guide complet se trouve dans l'aide du jeu (ÉCHAP - Aide - Aperçu de l'exploitation). PC/Mac uniquement.]]></fr>
+    </description>
+    <iconFilename>icon_FarmOverview.dds</iconFilename>
+    <multiplayer supported="true"/>
+    <l10n>
+        <text name="fa_title">
+            <en>Farm Overview</en>
+            <de>Betriebsübersicht</de>
+            <fr>Aperçu de l'exploitation</fr>
+        </text>
+        <text name="fa_tab_fields">
+            <en>Fields</en>
+            <de>Felder</de>
+            <fr>Champs</fr>
+        </text>
+        <text name="fa_tab_storage">
+            <en>Storage</en>
+            <de>Lager</de>
+            <fr>Stockage</fr>
+        </text>
+        <text name="fa_tab_animals">
+            <en>Animals</en>
+            <de>Tiere</de>
+            <fr>Animaux</fr>
+        </text>
+        <text name="fa_tab_production">
+            <en>Production</en>
+            <de>Produktion</de>
+            <fr>Production</fr>
+        </text>
+        <text name="fa_tab_report">
+            <en>Report</en>
+            <de>Report</de>
+            <fr>Rapport</fr>
+        </text>
+        <text name="fa_tab_crops">
+            <en>Crops</en>
+            <de>Früchte</de>
+            <fr>Cultures</fr>
+        </text>
+        <text name="fa_tab_settings">
+            <en>Settings</en>
+            <de>Einstellungen</de>
+            <fr>Réglages</fr>
+        </text>
+        <text name="fa_set_section_tasks">
+            <en>FIELD WORK IN THE TASK LIST</en>
+            <de>FELDARBEITEN IM AUFGABENZETTEL</de>
+            <fr>TRAVAUX AUX CHAMPS DANS LES TÂCHES</fr>
+        </text>
+        <text name="fa_set_task_roll">
+            <en>List rolling</en>
+            <de>Walzen auflisten</de>
+            <fr>Lister le roulage</fr>
+        </text>
+        <text name="fa_set_task_weeds">
+            <en>List weed control</en>
+            <de>Unkraut bekämpfen auflisten</de>
+            <fr>Lister le désherbage</fr>
+        </text>
+        <text name="fa_set_task_fert">
+            <en>List fertilizing</en>
+            <de>Düngen auflisten</de>
+            <fr>Lister la fertilisation</fr>
+        </text>
+        <text name="fa_set_task_lime">
+            <en>List liming</en>
+            <de>Kalken auflisten</de>
+            <fr>Lister le chaulage</fr>
+        </text>
+        <text name="fa_set_task_plow">
+            <en>List plowing</en>
+            <de>Pflügen auflisten</de>
+            <fr>Lister le labour</fr>
+        </text>
+        <text name="fa_set_section_values">
+            <en>SOIL HEALTH VALUES</en>
+            <de>BODENGESUNDHEIT-WERTE</de>
+            <fr>VALEURS SANTÉ DU SOL</fr>
+        </text>
+        <text name="fa_set_enabled">
+            <en>Soil health active</en>
+            <de>Bodengesundheit aktiv</de>
+            <fr>Santé du sol active</fr>
+        </text>
+        <text name="fa_set_affectyield">
+            <en>Affect yield</en>
+            <de>Ertrag beeinflussen</de>
+            <fr>Influer sur le rendement</fr>
+        </text>
+        <text name="fa_set_preset">
+            <en>Preset</en>
+            <de>Voreinstellung</de>
+            <fr>Préréglage</fr>
+        </text>
+        <text name="fa_set_starthealth">
+            <en>Start soil health</en>
+            <de>Start-Bodengesundheit</de>
+            <fr>Santé du sol de départ</fr>
+        </text>
+        <text name="fa_set_yieldmin">
+            <en>Yield factor min (at 0%)</en>
+            <de>Ertragsfaktor Minimum (bei 0 %)</de>
+            <fr>Facteur de rendement min (à 0 %)</fr>
+        </text>
+        <text name="fa_set_yieldmax">
+            <en>Yield factor max (at 100%)</en>
+            <de>Ertragsfaktor Maximum (bei 100 %)</de>
+            <fr>Facteur de rendement max (à 100 %)</fr>
+        </text>
+        <text name="fa_set_healthscale">
+            <en>Crop rotation impact</en>
+            <de>Fruchtfolge-Wirkung</de>
+            <fr>Impact de la rotation</fr>
+        </text>
+        <text name="fa_preset_arcade">
+            <en>Arcade</en>
+            <de>Arcade</de>
+            <fr>Arcade</fr>
+        </text>
+        <text name="fa_preset_standard">
+            <en>Standard</en>
+            <de>Standard</de>
+            <fr>Standard</fr>
+        </text>
+        <text name="fa_preset_realistisch">
+            <en>Realistic</en>
+            <de>Realistisch</de>
+            <fr>Réaliste</fr>
+        </text>
+        <text name="fa_preset_custom">
+            <en>Custom</en>
+            <de>Benutzerdefiniert</de>
+            <fr>Personnalisé</fr>
+        </text>
+        <text name="fa_help_cat">
+            <en>Farm Overview</en>
+            <de>Betriebsübersicht</de>
+            <fr>Aperçu de l'exploitation</fr>
+        </text>
+        <text name="fa_help_p1_title">
+            <en>Overview &amp; controls</en>
+            <de>Überblick &amp; Bedienung</de>
+            <fr>Aperçu &amp; commandes</fr>
+        </text>
+        <text name="fa_help_p1_intro">
+            <en>Farm Overview shows your whole farm on one page of the ESC menu: fields, soil health, storage, animals, productions, open tasks and the crops of the loaded map. Everything is evaluated fresh each time you open it.</en>
+            <de>Die Betriebsübersicht zeigt deinen ganzen Hof auf einer Seite im ESC-Menü: Felder, Bodengesundheit, Lager, Tiere, Produktionen, offene Aufgaben und die Früchte der geladenen Karte. Bei jedem Öffnen wird alles neu ausgewertet.</de>
+            <fr>L'aperçu de l'exploitation affiche toute votre ferme sur une page du menu ÉCHAP : champs, santé du sol, stockage, animaux, productions, tâches à faire et cultures de la carte chargée. Tout est recalculé à chaque ouverture.</fr>
+        </text>
+        <text name="fa_help_p1_open_t">
+            <en>Opening</en>
+            <de>Öffnen</de>
+            <fr>Ouvrir</fr>
+        </text>
+        <text name="fa_help_p1_open">
+            <en>Press ESC and select the Farm Overview tab (circular arrows icon, the first tab of the menu). The page works on foot and in a vehicle. It opens on the Tasks area. Scroll long lists with the mouse wheel or the slider on the right.</en>
+            <de>ESC drücken und den Reiter Betriebsübersicht wählen (Symbol mit zwei Kreispfeilen, erster Reiter des Menüs). Die Seite geht zu Fuß und im Fahrzeug. Sie öffnet mit dem Bereich Aufgaben. Lange Listen scrollst du mit dem Mausrad oder dem Schieberegler rechts.</de>
+            <fr>Appuyez sur ÉCHAP et choisissez l'onglet Aperçu de l'exploitation (icône à deux flèches circulaires, premier onglet du menu). La page fonctionne à pied comme en véhicule. Elle s'ouvre sur la rubrique Tâches. Faites défiler les longues listes avec la molette ou le curseur à droite.</fr>
+        </text>
+        <text name="fa_help_p1_tabs_t">
+            <en>Areas</en>
+            <de>Bereiche</de>
+            <fr>Rubriques</fr>
+        </text>
+        <text name="fa_help_p1_tabs">
+            <en>The tabs at the top switch between Tasks, Fields, Animals, Production, Storage, Finances and Settings; the active tab is highlighted in green. Colours follow one rule everywhere: green is fine, yellow needs attention soon, red needs action now.</en>
+            <de>Die Reiter oben wechseln zwischen Aufgaben, Felder, Tiere, Produktion, Lager, Finanzen und Einstellungen; der aktive Reiter ist grün. Die Farben folgen überall derselben Regel: grün ist in Ordnung, gelb braucht bald Aufmerksamkeit, rot braucht sofort Handeln.</de>
+            <fr>Les onglets du haut passent de Tâches à Champs, Animaux, Production, Stockage, Finances et Réglages ; l'onglet actif est en vert. Les couleurs suivent partout la même règle : vert tout va bien, jaune à surveiller bientôt, rouge à traiter tout de suite.</fr>
+        </text>
+        <text name="fa_help_p1_crops_t">
+            <en>Crops</en>
+            <de>Früchte</de>
+            <fr>Cultures</fr>
+        </text>
+        <text name="fa_help_p1_crops">
+            <en>Under Settings, the section Crops for recommendations lists every crop of the loaded map with plant family and yield, each with an ON/OFF switch. OFF removes the crop from the recommendations - a crop you never want to grow is no longer suggested. Special crops outside normal arable farming such as poplar, cotton, sugarcane and rice start switched off. The selection is saved with the savegame and applies to the whole farm; in multiplayer the server keeps it and shares it with everyone.</en>
+            <de>Unter Einstellungen listet der Abschnitt Früchte für Empfehlungen alle Früchte der geladenen Karte mit Pflanzenfamilie und Ertrag, jede mit einem AN/AUS-Schalter. AUS nimmt die Frucht aus den Empfehlungen - was du nie anbauen willst, wird nicht mehr vorgeschlagen. Sonderkulturen außerhalb des Ackerbaus wie Pappel, Baumwolle, Zuckerrohr und Reis sind zunächst aus. Die Auswahl wird mit dem Spielstand gespeichert und gilt für den ganzen Hof; im Mehrspieler verwaltet sie der Server und verteilt sie an alle.</de>
+            <fr>Dans les Réglages, la section Cultures pour les recommandations liste toutes les cultures de la carte chargée avec famille botanique et rendement, chacune avec un interrupteur ACTIVÉ/DÉSACTIVÉ. DÉSACTIVÉ retire la culture des recommandations - ce que vous ne voulez jamais semer n'est plus proposé. Les cultures hors grandes cultures comme le peuplier, le coton, la canne à sucre et le riz sont désactivées au départ. Le choix est enregistré avec la sauvegarde et vaut pour toute la ferme ; en multijoueur, le serveur le gère et le partage avec tous.</fr>
+        </text>
+        <text name="fa_help_p2_title">
+            <en>Soil health</en>
+            <de>Bodengesundheit</de>
+            <fr>Santé du sol</fr>
+        </text>
+        <text name="fa_help_p2_intro">
+            <en>Every farmland has a soil health from 0 to 100%. It is shown in the Farm Overview, in the SOIL column of the Fields area.</en>
+            <de>Jedes Grundstück hat eine Bodengesundheit von 0 bis 100 %. Sie steht in der Betriebsübersicht, im Bereich Felder in der Spalte BODENWERTE.</de>
+            <fr>Chaque terrain a une santé du sol de 0 à 100 %. Elle apparaît dans l'aperçu de l'exploitation, rubrique Champs, colonne SOL.</fr>
+        </text>
+        <text name="fa_help_p2_sow_t">
+            <en>Sowing &amp; rotation</en>
+            <de>Aussaat &amp; Fruchtfolge</de>
+            <fr>Semis &amp; rotation</fr>
+        </text>
+        <text name="fa_help_p2_sow">
+            <en>When sowing, the new crop is compared to the previous one. A good rotation and soil builders (legumes, grass) raise soil health, monoculture lowers it.</en>
+            <de>Bei der Aussaat wird die neue Frucht mit der Vorfrucht verglichen. Eine gute Fruchtfolge und Bodenaufbauer (Leguminosen, Gras) heben die Bodengesundheit, Monokultur senkt sie.</de>
+            <fr>Au semis, la nouvelle culture est comparée à la précédente. Une bonne rotation et les cultures améliorant le sol (légumineuses, herbe) augmentent la santé du sol, la monoculture la baisse.</fr>
+        </text>
+        <text name="fa_help_p2_yield_t">
+            <en>Yield</en>
+            <de>Ertrag</de>
+            <fr>Rendement</fr>
+        </text>
+        <text name="fa_help_p2_yield">
+            <en>The harvest yield is scaled by soil health: neglected fields yield less, well-kept fields more. You can turn this off in the Settings area (display only).</en>
+            <de>Der Ernteertrag wird anhand der Bodengesundheit skaliert: vernachlässigte Felder bringen weniger, gut gepflegte mehr. Das lässt sich im Bereich Einstellungen abschalten (nur Anzeige).</de>
+            <fr>Le rendement de la récolte est modulé par la santé du sol : les champs négligés produisent moins, les champs bien entretenus davantage. On peut le désactiver dans la rubrique Réglages (affichage seul).</fr>
+        </text>
+        <text name="fa_help_p3_title">
+            <en>Settings &amp; multiplayer</en>
+            <de>Einstellungen &amp; Multiplayer</de>
+            <fr>Réglages &amp; multijoueur</fr>
+        </text>
+        <text name="fa_help_p3_intro">
+            <en>In the Settings area you change every value directly on the page using the ◄ value ► selectors.</en>
+            <de>Im Bereich Einstellungen änderst du alle Werte direkt auf der Seite über die ◄ Wert ►-Auswahlfelder.</de>
+            <fr>Dans la rubrique Réglages, vous modifiez chaque valeur directement sur la page à l'aide des sélecteurs ◄ valeur ►.</fr>
+        </text>
+        <text name="fa_help_p3_preset_t">
+            <en>Presets</en>
+            <de>Voreinstellungen</de>
+            <fr>Préréglages</fr>
+        </text>
+        <text name="fa_help_p3_preset">
+            <en>The presets Arcade, Standard and Realistic set the start value, yield range and rotation impact for you. If you change a number by hand, the preset switches to "Custom".</en>
+            <de>Die Voreinstellungen Arcade, Standard und Realistisch setzen Startwert, Ertragsspanne und Fruchtfolge-Wirkung passend. Änderst du eine Zahl von Hand, schaltet die Voreinstellung auf »Benutzerdefiniert«.</de>
+            <fr>Les préréglages Arcade, Standard et Réaliste définissent la valeur de départ, la plage de rendement et l'impact de la rotation. Si vous modifiez un nombre à la main, le préréglage passe sur « Personnalisé ».</fr>
+        </text>
+        <text name="fa_help_p3_mp_t">
+            <en>Multiplayer &amp; saving</en>
+            <de>Multiplayer &amp; Speichern</de>
+            <fr>Multijoueur &amp; sauvegarde</fr>
+        </text>
+        <text name="fa_help_p3_mp">
+            <en>The server is authoritative: a player's change is sent to the server, saved there and distributed to everyone. The values persist in the savegame.</en>
+            <de>Der Server ist maßgeblich: Änderungen eines Mitspielers werden an den Server geschickt, dort gespeichert und an alle verteilt. Die Werte bleiben im Spielstand erhalten.</de>
+            <fr>Le serveur fait autorité : la modification d'un joueur est envoyée au serveur, sauvegardée puis distribuée à tous. Les valeurs sont conservées dans la sauvegarde.</fr>
+        </text>
+        <text name="fa_h_field">
+            <en>FIELD</en>
+            <de>FELD</de>
+            <fr>CHAMP</fr>
+        </text>
+        <text name="fa_h_area">
+            <en>AREA</en>
+            <de>FLÄCHE</de>
+            <fr>SURFACE</fr>
+        </text>
+        <text name="fa_h_current">
+            <en>CURRENT</en>
+            <de>AKTUELL</de>
+            <fr>ACTUEL</fr>
+        </text>
+        <text name="fa_h_soil">
+            <en>SOIL</en>
+            <de>BODENWERTE</de>
+            <fr>SOL</fr>
+        </text>
+        <text name="fa_h_recommend">
+            <en>RECOMMENDED</en>
+            <de>EMPFEHLUNG</de>
+            <fr>CONSEILLÉ</fr>
+        </text>
+        <text name="fa_h_bonus">
+            <en>BONUS</en>
+            <de>BONUS</de>
+            <fr>BONUS</fr>
+        </text>
+        <text name="fa_h_crop">
+            <en>CROP</en>
+            <de>FRUCHT</de>
+            <fr>CULTURE</fr>
+        </text>
+        <text name="fa_h_yieldha">
+            <en>YIELD</en>
+            <de>ERTRAG</de>
+            <fr>RENDEMENT</fr>
+        </text>
+        <text name="fa_h_family">
+            <en>FAMILY</en>
+            <de>FAMILIE</de>
+            <fr>FAMILLE</fr>
+        </text>
+        <text name="fa_h_use">
+            <en>PLANNED</en>
+            <de>EINGEPLANT</de>
+            <fr>PLANIFIÉE</fr>
+        </text>
+        <text name="fa_crop_on">
+            <en>yes</en>
+            <de>ja</de>
+            <fr>oui</fr>
+        </text>
+        <text name="fa_crop_off">
+            <en>no</en>
+            <de>nein</de>
+            <fr>non</fr>
+        </text>
+        <text name="fa_famname_cereal">
+            <en>cereal</en>
+            <de>Getreide</de>
+            <fr>céréale</fr>
+        </text>
+        <text name="fa_famname_legume">
+            <en>legume</en>
+            <de>Leguminose</de>
+            <fr>légumineuse</fr>
+        </text>
+        <text name="fa_famname_grass">
+            <en>grass</en>
+            <de>Gras</de>
+            <fr>herbe</fr>
+        </text>
+        <text name="fa_famname_maize">
+            <en>maize</en>
+            <de>Mais</de>
+            <fr>maïs</fr>
+        </text>
+        <text name="fa_famname_root">
+            <en>root crop</en>
+            <de>Hackfrucht</de>
+            <fr>plante sarclée</fr>
+        </text>
+        <text name="fa_famname_brassica">
+            <en>brassica</en>
+            <de>Kreuzblütler</de>
+            <fr>brassicacée</fr>
+        </text>
+        <text name="fa_famname_oil">
+            <en>oilseed</en>
+            <de>Ölfrucht</de>
+            <fr>oléagineux</fr>
+        </text>
+        <text name="fa_famname_cover">
+            <en>cover crop</en>
+            <de>Zwischenfrucht</de>
+            <fr>culture dérobée</fr>
+        </text>
+        <text name="fa_famname_cane">
+            <en>cane</en>
+            <de>Zuckerrohr</de>
+            <fr>canne</fr>
+        </text>
+        <text name="fa_famname_cotton">
+            <en>cotton</en>
+            <de>Baumwolle</de>
+            <fr>coton</fr>
+        </text>
+        <text name="fa_fam_derived">
+            <en>(derived)</en>
+            <de>(abgeleitet)</de>
+            <fr>(déduite)</fr>
+        </text>
+        <text name="fa_fam_unknown">
+            <en>own family</en>
+            <de>eigene Familie</de>
+            <fr>famille propre</fr>
+        </text>
+        <text name="fa_fam_perennial">
+            <en>- regrows</en>
+            <de>- wächst nach</de>
+            <fr>- repousse</fr>
+        </text>
+        <text name="fa_crops_none">
+            <en>No crops read from the map.</en>
+            <de>Keine Früchte von der Karte gelesen.</de>
+            <fr>Aucune culture lue depuis la carte.</fr>
+        </text>
+        <text name="fa_crops_hint">
+            <en>Click a crop to include or exclude it from the recommendations - every click toggles, so a double-click switches it back.</en>
+            <de>Klick auf eine Frucht nimmt sie in die Empfehlungen auf oder heraus - jeder Klick schaltet um, ein Doppelklick also wieder zurück.</de>
+            <fr>Cliquez sur une culture pour l'inclure ou l'exclure des recommandations - chaque clic bascule, un double-clic la rétablit donc.</fr>
+        </text>
+        <text name="fa_h_goods">
+            <en>GOODS</en>
+            <de>WARE</de>
+            <fr>PRODUIT</fr>
+        </text>
+        <text name="fa_h_stock">
+            <en>STOCK</en>
+            <de>LAGER</de>
+            <fr>STOCK</fr>
+        </text>
+        <text name="fa_h_demand">
+            <en>DEMAND/MONTH</en>
+            <de>BEDARF/MONAT</de>
+            <fr>BESOIN/MOIS</fr>
+        </text>
+        <text name="fa_h_demandmo">
+            <en>DEMAND/MO</en>
+            <de>BEDARF/MON</de>
+            <fr>BESOIN/MOIS</fr>
+        </text>
+        <text name="fa_h_range">
+            <en>RANGE</en>
+            <de>REICHWEITE</de>
+            <fr>AUTONOMIE</fr>
+        </text>
+        <text name="fa_h_full">
+            <en>FULL</en>
+            <de>VOLL</de>
+            <fr>REMPLI</fr>
+        </text>
+        <text name="fa_h_market">
+            <en>MARKET</en>
+            <de>MARKT</de>
+            <fr>MARCHÉ</fr>
+        </text>
+        <text name="fa_h_animal">
+            <en>ANIMAL</en>
+            <de>TIER</de>
+            <fr>ANIMAL</fr>
+        </text>
+        <text name="fa_h_count">
+            <en>COUNT</en>
+            <de>BESTAND</de>
+            <fr>EFFECTIF</fr>
+        </text>
+        <text name="fa_h_age">
+            <en>AVG AGE</en>
+            <de>Ø ALTER</de>
+            <fr>ÂGE MOY.</fr>
+        </text>
+        <text name="fa_h_note">
+            <en>NOTE</en>
+            <de>HINWEIS</de>
+            <fr>REMARQUE</fr>
+        </text>
+        <text name="fa_h_feed">
+            <en>FEED</en>
+            <de>FUTTER</de>
+            <fr>FOURRAGE</fr>
+        </text>
+        <text name="fa_grp_feed">
+            <en>FEED &amp; BEDDING</en>
+            <de>FUTTER &amp; EINSTREU</de>
+            <fr>FOURRAGE &amp; LITIÈRE</fr>
+        </text>
+        <text name="fa_grp_crops">
+            <en>CROPS</en>
+            <de>FELDFRÜCHTE</de>
+            <fr>CULTURES</fr>
+        </text>
+        <text name="fa_grp_animalprod">
+            <en>ANIMAL PRODUCTS &amp; FERTILIZER</en>
+            <de>TIERPRODUKTE &amp; DÜNGER</de>
+            <fr>PRODUITS ANIMAUX &amp; ENGRAIS</fr>
+        </text>
+        <text name="fa_grp_supplies">
+            <en>SUPPLIES</en>
+            <de>BETRIEBSMITTEL</de>
+            <fr>CONSOMMABLES</fr>
+        </text>
+        <text name="fa_grp_other">
+            <en>PRODUCTS &amp; OTHER</en>
+            <de>PRODUKTE &amp; SONSTIGES</de>
+            <fr>PRODUITS &amp; AUTRES</fr>
+        </text>
+        <text name="fa_sec_herd">
+            <en>LIVESTOCK</en>
+            <de>TIERBESTAND</de>
+            <fr>CHEPTEL</fr>
+        </text>
+        <text name="fa_sec_feeddemand">
+            <en>FEED DEMAND &amp; RANGE</en>
+            <de>FUTTERBEDARF &amp; REICHWEITE</de>
+            <fr>BESOIN EN FOURRAGE &amp; AUTONOMIE</fr>
+        </text>
+        <text name="fa_sec_tmr">
+            <en>TMR MIX (INGREDIENTS)</en>
+            <de>TMR-MISCHUNG (ZUTATEN)</de>
+            <fr>RATION TMR (INGRÉDIENTS)</fr>
+        </text>
+        <text name="fa_yf_sec">
+            <en>YIELD FACTORS</en>
+            <de>ERTRAGSFAKTOREN</de>
+            <fr>FACTEURS DE RENDEMENT</fr>
+        </text>
+        <text name="fa_yf_status">
+            <en>Status</en>
+            <de>Status</de>
+            <fr>Statut</fr>
+        </text>
+        <text name="fa_yf_aus">
+            <en>off - map values</en>
+            <de>aus - Werte der Karte</de>
+            <fr>désactivé - valeurs de la carte</fr>
+        </text>
+        <text name="fa_yf_basis">
+            <en>Basis</en>
+            <de>Basis</de>
+            <fr>Base</fr>
+        </text>
+        <text name="fa_yf_basisKarte">
+            <en>map values</en>
+            <de>Werte der Karte</de>
+            <fr>valeurs de la carte</fr>
+        </text>
+        <text name="fa_yf_basisRef">
+            <en>base game reference</en>
+            <de>Referenz des Basisspiels</de>
+            <fr>référence du jeu de base</fr>
+        </text>
+        <text name="fa_yf_neutral">
+            <en>all factors 1.00</en>
+            <de>alle Faktoren 1.00</de>
+            <fr>tous les facteurs à 1.00</fr>
+        </text>
+        <text name="fa_yf_stroh">
+            <en>Straw</en>
+            <de>Stroh</de>
+            <fr>Paille</fr>
+        </text>
+        <text name="fa_yf_saat">
+            <en>Seed usage</en>
+            <de>Saatgutbedarf</de>
+            <fr>Besoin en semences</fr>
+        </text>
+        <text name="fa_yf_getreide">
+            <en>Cereals</en>
+            <de>Getreide</de>
+            <fr>Céréales</fr>
+        </text>
+        <text name="fa_yf_mais">
+            <en>Maize</en>
+            <de>Mais</de>
+            <fr>Maïs</fr>
+        </text>
+        <text name="fa_yf_oel">
+            <en>Oilseeds</en>
+            <de>Ölfrüchte</de>
+            <fr>Oléagineux</fr>
+        </text>
+        <text name="fa_yf_hack">
+            <en>Root crops</en>
+            <de>Hackfrüchte</de>
+            <fr>Plantes sarclées</fr>
+        </text>
+        <text name="fa_yf_huelsen">
+            <en>Legumes</en>
+            <de>Hülsenfrüchte</de>
+            <fr>Légumineuses</fr>
+        </text>
+        <text name="fa_yf_gras">
+            <en>Grass and forage</en>
+            <de>Gras und Futter</de>
+            <fr>Herbe et fourrage</fr>
+        </text>
+        <text name="fa_yf_zwischen">
+            <en>Catch crops</en>
+            <de>Zwischenfrüchte</de>
+            <fr>Cultures intermédiaires</fr>
+        </text>
+        <text name="fa_yf_obst">
+            <en>Fruit</en>
+            <de>Obst</de>
+            <fr>Fruits</fr>
+        </text>
+        <text name="fa_yf_sonder">
+            <en>Special crops</en>
+            <de>Sonderkulturen</de>
+            <fr>Cultures spéciales</fr>
+        </text>
+        <text name="fa_sec_todo">
+            <en>ACTION NEEDED</en>
+            <de>HANDLUNGSBEDARF</de>
+            <fr>ACTIONS À MENER</fr>
+        </text>
+        <text name="fa_field">
+            <en>Field</en>
+            <de>Feld</de>
+            <fr>Champ</fr>
+        </text>
+        <text name="fa_fallow">
+            <en>Fallow</en>
+            <de>Brache</de>
+            <fr>Jachère</fr>
+        </text>
+        <text name="fa_worked">
+            <en>worked (%s)</en>
+            <de>bearb. (%s)</de>
+            <fr>travaillé (%s)</fr>
+        </text>
+        <text name="fa_collapse">
+            <en>[ collapse ]</en>
+            <de>[ zuklappen ]</de>
+            <fr>[ réduire ]</fr>
+        </text>
+        <text name="fa_lbl_score">
+            <en>Score</en>
+            <de>Bewertung</de>
+            <fr>Note</fr>
+        </text>
+        <text name="fa_outlook">
+            <en>Outlook:</en>
+            <de>Weitblick:</de>
+            <fr>Projection :</fr>
+        </text>
+        <text name="fa_unit_mo">
+            <en>mo</en>
+            <de>Mo</de>
+            <fr>mois</fr>
+        </text>
+        <text name="fa_unit_day">
+            <en>day</en>
+            <de>Tag</de>
+            <fr>jour</fr>
+        </text>
+        <text name="fa_unit_days">
+            <en>days</en>
+            <de>Tage</de>
+            <fr>jours</fr>
+        </text>
+        <text name="fa_unit_month">
+            <en>month</en>
+            <de>Monat</de>
+            <fr>mois</fr>
+        </text>
+        <text name="fa_unit_months">
+            <en>months</en>
+            <de>Monate</de>
+            <fr>mois</fr>
+        </text>
+        <text name="fa_unit_years">
+            <en>years</en>
+            <de>Jahre</de>
+            <fr>ans</fr>
+        </text>
+        <text name="fa_reach_max">
+            <en>&gt; 10 years</en>
+            <de>&gt; 10 Jahre</de>
+            <fr>&gt; 10 ans</fr>
+        </text>
+        <text name="fa_unit_lmo">
+            <en>L/mo</en>
+            <de>L/Mo</de>
+            <fr>L/mois</fr>
+        </text>
+        <text name="fa_active">
+            <en>active</en>
+            <de>aktiv</de>
+            <fr>actif</fr>
+        </text>
+        <text name="fa_off">
+            <en>off</en>
+            <de>aus</de>
+            <fr>arrêt</fr>
+        </text>
+        <text name="fa_input">
+            <en>Input</en>
+            <de>Eingang</de>
+            <fr>Entrée</fr>
+        </text>
+        <text name="fa_output">
+            <en>Output</en>
+            <de>Ausgang</de>
+            <fr>Sortie</fr>
+        </text>
+        <text name="fa_empty">
+            <en>empty!</en>
+            <de>leer!</de>
+            <fr>vide !</fr>
+        </text>
+        <text name="fa_production">
+            <en>Production</en>
+            <de>Produktion</de>
+            <fr>Production</fr>
+        </text>
+        <text name="fa_recipe">
+            <en>Recipe</en>
+            <de>Rezept</de>
+            <fr>Recette</fr>
+        </text>
+        <text name="fa_barn_full">
+            <en>Barn full</en>
+            <de>Stall voll</de>
+            <fr>Étable pleine</fr>
+        </text>
+        <text name="fa_overaged">
+            <en>over-aged</en>
+            <de>überaltert</de>
+            <fr>trop âgé</fr>
+        </text>
+        <text name="fa_overaged_sell">
+            <en>over-aged - sell</en>
+            <de>überaltert - verkaufen</de>
+            <fr>trop âgé - à vendre</fr>
+        </text>
+        <text name="fa_low">
+            <en>Low:</en>
+            <de>Knapp:</de>
+            <fr>Faible :</fr>
+        </text>
+        <text name="fa_shortage_none">
+            <en>Stocks are sufficient - nothing needs sowing urgently.</en>
+            <de>Vorräte reichen - nichts muss dringend angebaut werden.</de>
+            <fr>Les stocks suffisent - aucun semis urgent.</fr>
+        </text>
+        <text name="fa_shortage_more">
+            <en>(+%d more)</en>
+            <de>(+%d weitere)</de>
+            <fr>(+%d autres)</fr>
+        </text>
+        <text name="fa_plan_supply">
+            <en>Plan restock / planting</en>
+            <de>Nachschub/Anbau einplanen</de>
+            <fr>Prévoir réappro / semis</fr>
+        </text>
+        <text name="fa_sell_expand">
+            <en>Sell animals / expand</en>
+            <de>Tiere verkaufen/erweitern</de>
+            <fr>Vendre / agrandir</fr>
+        </text>
+        <text name="fa_sell_late_short">
+            <en>past peak</en>
+            <de>über Bestpreis</de>
+            <fr>pic dépassé</fr>
+        </text>
+        <text name="fa_calving_short">
+            <en>+%d mo</en>
+            <de>+%d Mo</de>
+            <fr>+%d mois</fr>
+        </text>
+        <text name="fa_growing">
+            <en>%d still growing</en>
+            <de>%d wachsen noch</de>
+            <fr>%d en croissance</fr>
+        </text>
+        <text name="fa_lage_zualt">
+            <en>%d past peak</en>
+            <de>%d über dem Bestpreis</de>
+            <fr>%d au-delà du pic</fr>
+        </text>
+        <text name="fa_lage_peakvoll">
+            <en>sell now: %d at best price, barn full</en>
+            <de>jetzt verkaufen: %d im Bestpreis, Stall voll</de>
+            <fr>vendre : %d au meilleur prix, étable pleine</fr>
+        </text>
+        <text name="fa_lage_peak">
+            <en>%d at best price</en>
+            <de>%d im Bestpreis</de>
+            <fr>%d au meilleur prix</fr>
+        </text>
+        <text name="fa_lage_quali">
+            <en>low output %d%% - feed better</en>
+            <de>Leistung %d%% - besser füttern</de>
+            <fr>rendement %d%% - mieux nourrir</fr>
+        </text>
+        <text name="fa_unit_animals">
+            <en>animals</en>
+            <de>Tiere</de>
+            <fr>animaux</fr>
+        </text>
+        <text name="fa_d_peakfull">
+            <en>barn full, worth %s</en>
+            <de>Stall voll, Wert %s</de>
+            <fr>étable pleine, valeur %s</fr>
+        </text>
+        <text name="fa_d_lostvalue">
+            <en>%s below peak</en>
+            <de>%s unter Bestpreis</de>
+            <fr>%s sous le pic</fr>
+        </text>
+        <text name="fa_d_feedbetter">
+            <en>feed better - selling does not help</en>
+            <de>besser füttern - verkaufen hilft nicht</de>
+            <fr>mieux nourrir - vendre n'aide pas</fr>
+        </text>
+        <text name="fa_calving_in">
+            <en>young in ~%d mo</en>
+            <de>Nachwuchs in ~%d Mo</de>
+            <fr>petits dans ~%d mois</fr>
+        </text>
+        <text name="fa_herd_value">
+            <en>Herd value</en>
+            <de>Herdenwert</de>
+            <fr>Valeur du troupeau</fr>
+        </text>
+        <text name="fa_herd_ready">
+            <en>%d animals at best price = %s</en>
+            <de>%d Tiere im Bestpreis = %s</de>
+            <fr>%d animaux au meilleur prix = %s</fr>
+        </text>
+        <text name="fa_h_value">
+            <en>VALUE</en>
+            <de>WERT</de>
+            <fr>VALEUR</fr>
+        </text>
+        <text name="fa_h_sell">
+            <en>SELLING</en>
+            <de>VERKAUF</de>
+            <fr>VENTE</fr>
+        </text>
+        <text name="fa_more_groups">
+            <en>+ %d more groups</en>
+            <de>+ %d weitere</de>
+            <fr>+ %d autres</fr>
+        </text>
+        <text name="fa_sell_peak">
+            <en>best price now</en>
+            <de>Bestpreis jetzt</de>
+            <fr>meilleur prix</fr>
+        </text>
+        <text name="fa_sell_late">
+            <en>past peak (%d mo)</en>
+            <de>Peak war bei %d Mo</de>
+            <fr>pic passé (%d mois)</fr>
+        </text>
+        <text name="fa_sell_wait">
+            <en>peak at %d mo</en>
+            <de>Bestpreis bei %d Mo</de>
+            <fr>pic à %d mois</fr>
+        </text>
+        <text name="fa_unknown_breed">
+            <en>unknown breed</en>
+            <de>unbekannt</de>
+            <fr>race inconnue</fr>
+        </text>
+        <text name="fa_per_head">
+            <en>/head</en>
+            <de>/Tier</de>
+            <fr>/tête</fr>
+        </text>
+        <text name="fa_t_sellpeak">
+            <en>Best price: %s</en>
+            <de>Bestpreis: %s</de>
+            <fr>Meilleur prix : %s</fr>
+        </text>
+        <text name="fa_sell_now">
+            <en>sell now (peak passed)</en>
+            <de>jetzt verkaufen (Peak überschritten)</de>
+            <fr>vendre maintenant (pic dépassé)</fr>
+        </text>
+        <text name="fa_input_empty">
+            <en>%s: input empty</en>
+            <de>%s: Eingang leer</de>
+            <fr>%s : entrée vide</fr>
+        </text>
+        <text name="fa_missing">
+            <en>%s missing</en>
+            <de>%s fehlt</de>
+            <fr>%s manquant</fr>
+        </text>
+        <text name="fa_no_action">
+            <en>No urgent action needed.</en>
+            <de>Kein akuter Handlungsbedarf.</de>
+            <fr>Aucune action urgente.</fr>
+        </text>
+        <text name="fa_health_verygood">
+            <en>Very good</en>
+            <de>Sehr gut</de>
+            <fr>Très bon</fr>
+        </text>
+        <text name="fa_health_good">
+            <en>Good</en>
+            <de>Gut</de>
+            <fr>Bon</fr>
+        </text>
+        <text name="fa_health_mid">
+            <en>Medium</en>
+            <de>Mittel</de>
+            <fr>Moyen</fr>
+        </text>
+        <text name="fa_health_weak">
+            <en>Weak</en>
+            <de>Schwach</de>
+            <fr>Faible</fr>
+        </text>
+        <text name="fa_health_exhausted">
+            <en>Exhausted</en>
+            <de>Erschöpft</de>
+            <fr>Épuisé</fr>
+        </text>
+        <text name="fa_animal_COW">
+            <en>Cows</en>
+            <de>Kühe</de>
+            <fr>Vaches</fr>
+        </text>
+        <text name="fa_animal_PIG">
+            <en>Pigs</en>
+            <de>Schweine</de>
+            <fr>Cochons</fr>
+        </text>
+        <text name="fa_animal_SHEEP">
+            <en>Sheep</en>
+            <de>Schafe</de>
+            <fr>Moutons</fr>
+        </text>
+        <text name="fa_animal_HORSE">
+            <en>Horses</en>
+            <de>Pferde</de>
+            <fr>Chevaux</fr>
+        </text>
+        <text name="fa_animal_CHICKEN">
+            <en>Chickens</en>
+            <de>Hühner</de>
+            <fr>Poules</fr>
+        </text>
+
+        <text name="fa_tab_tasks">
+            <en>Tasks</en>
+            <de>Aufgaben</de>
+            <fr>Tâches</fr>
+        </text>
+        <text name="fa_task_sec_urgent">
+            <en>URGENT</en>
+            <de>DRINGEND</de>
+            <fr>URGENT</fr>
+        </text>
+        <text name="fa_task_sec_soon">
+            <en>SOON</en>
+            <de>BALD</de>
+            <fr>BIENTÔT</fr>
+        </text>
+        <text name="fa_task_sec_info">
+            <en>NOTES</en>
+            <de>HINWEISE</de>
+            <fr>À NOTER</fr>
+        </text>
+        <text name="fa_task_h_task">
+            <en>TASK</en>
+            <de>AUFGABE</de>
+            <fr>TÂCHE</fr>
+        </text>
+        <text name="fa_task_h_value">
+            <en>VALUE</en>
+            <de>WERT</de>
+            <fr>VALEUR</fr>
+        </text>
+        <text name="fa_task_step_one">
+            <en>1 step</en>
+            <de>1 Schritt</de>
+            <fr>1 étape</fr>
+        </text>
+        <text name="fa_task_steps">
+            <en>%d steps</en>
+            <de>%d Schritte</de>
+            <fr>%d étapes</fr>
+        </text>
+        <text name="fa_task_next">
+            <en>next: %s</en>
+            <de>als Nächstes: %s</de>
+            <fr>ensuite : %s</fr>
+        </text>
+        <text name="fa_task_step_of">
+            <en>step %d of %d</en>
+            <de>Schritt %d von %d</de>
+            <fr>étape %d sur %d</fr>
+        </text>
+        <text name="fa_t_till">
+            <en>Cultivate field %s</en>
+            <de>Feld %s grubbern</de>
+            <fr>Déchaumer le champ %s</fr>
+        </text>
+        <text name="fa_step_till">
+            <en>cultivating</en>
+            <de>grubbern</de>
+            <fr>déchaumer</fr>
+        </text>
+        <text name="fa_t_shred">
+            <en>Mulch stubble on field %s</en>
+            <de>Stoppel häckseln auf Feld %s</de>
+            <fr>Broyer le chaume du champ %s</fr>
+        </text>
+        <text name="fa_step_harvest">
+            <en>harvest</en>
+            <de>ernten</de>
+            <fr>récolter</fr>
+        </text>
+        <text name="fa_step_withered">
+            <en>withered</en>
+            <de>verwelkt</de>
+            <fr>fané</fr>
+        </text>
+        <text name="fa_step_weeds">
+            <en>weed control</en>
+            <de>Unkraut</de>
+            <fr>désherber</fr>
+        </text>
+        <text name="fa_step_roll">
+            <en>rolling</en>
+            <de>walzen</de>
+            <fr>rouler</fr>
+        </text>
+        <text name="fa_step_shred">
+            <en>mulch stubble</en>
+            <de>häckseln</de>
+            <fr>broyer</fr>
+        </text>
+        <text name="fa_step_lime">
+            <en>liming</en>
+            <de>kalken</de>
+            <fr>chauler</fr>
+        </text>
+        <text name="fa_step_fert">
+            <en>fertilizing</en>
+            <de>düngen</de>
+            <fr>fertiliser</fr>
+        </text>
+        <text name="fa_step_plow">
+            <en>plowing</en>
+            <de>pflügen</de>
+            <fr>labourer</fr>
+        </text>
+        <text name="fa_step_sow">
+            <en>sowing</en>
+            <de>bestellen</de>
+            <fr>semer</fr>
+        </text>
+        <text name="fa_step_soil">
+            <en>rest soil</en>
+            <de>Boden schonen</de>
+            <fr>ménager le sol</fr>
+        </text>
+        <text name="fa_task_h_area">
+            <en>AREA</en>
+            <de>BEREICH</de>
+            <fr>DOMAINE</fr>
+        </text>
+        <text name="fa_task_cat_field">
+            <en>Field</en>
+            <de>Feld</de>
+            <fr>Champ</fr>
+        </text>
+        <text name="fa_task_cat_animal">
+            <en>Animals</en>
+            <de>Tiere</de>
+            <fr>Animaux</fr>
+        </text>
+        <text name="fa_task_cat_production">
+            <en>Production</en>
+            <de>Produktion</de>
+            <fr>Production</fr>
+        </text>
+        <text name="fa_task_cat_storage">
+            <en>Storage</en>
+            <de>Lager</de>
+            <fr>Stockage</fr>
+        </text>
+        <text name="fa_task_cat_vehicle">
+            <en>Machines</en>
+            <de>Maschinen</de>
+            <fr>Machines</fr>
+        </text>
+        <text name="fa_task_cat_plan">
+            <en>Planning</en>
+            <de>Planung</de>
+            <fr>Planification</fr>
+        </text>
+        <text name="fa_task_cat_market">
+            <en>Market</en>
+            <de>Markt</de>
+            <fr>Marché</fr>
+        </text>
+        <text name="fa_task_h_detail">
+            <en>DETAIL</en>
+            <de>DETAIL</de>
+            <fr>DÉTAIL</fr>
+        </text>
+        <text name="fa_task_h_status">
+            <en>STATUS</en>
+            <de>STATUS</de>
+            <fr>STATUT</fr>
+        </text>
+        <text name="fa_task_open">
+            <en>open</en>
+            <de>offen</de>
+            <fr>ouverte</fr>
+        </text>
+        <text name="fa_task_taken">
+            <en>taken</en>
+            <de>übernommen</de>
+            <fr>prise</fr>
+        </text>
+        <text name="fa_task_me">
+            <en>me</en>
+            <de>ich</de>
+            <fr>moi</fr>
+        </text>
+        <text name="fa_task_none">
+            <en>Nothing to do - everything is under control.</en>
+            <de>Nichts zu tun - alles im grünen Bereich.</de>
+            <fr>Rien à faire - tout est sous contrôle.</fr>
+        </text>
+        <text name="fa_task_hint">
+            <en>Click a task to take it over or hand it back. Finished work disappears by itself.</en>
+            <de>Klick auf eine Aufgabe: übernehmen oder zurückgeben. Erledigte Arbeit verschwindet von selbst.</de>
+            <fr>Cliquez sur une tâche pour la prendre ou la rendre. Le travail fait disparaît tout seul.</fr>
+        </text>
+        <text name="fa_task_count">
+            <en>%d open, %d taken</en>
+            <de>%d offen, %d übernommen</de>
+            <fr>%d ouvertes, %d prises</fr>
+        </text>
+        <text name="fa_t_harvest">
+            <en>Harvest field %s</en>
+            <de>Feld %s ernten</de>
+            <fr>Récolter le champ %s</fr>
+        </text>
+        <text name="fa_t_withered">
+            <en>Field %s withered - mulch</en>
+            <de>Feld %s verdorrt - mulchen</de>
+            <fr>Champ %s flétri - broyer</fr>
+        </text>
+        <text name="fa_t_weeds">
+            <en>Treat weeds on field %s</en>
+            <de>Feld %s: Unkraut bekämpfen</de>
+            <fr>Champ %s : désherber</fr>
+        </text>
+        <text name="fa_t_roll">
+            <en>Roll field %s</en>
+            <de>Feld %s walzen</de>
+            <fr>Rouler le champ %s</fr>
+        </text>
+        <text name="fa_t_fert">
+            <en>Fertilize field %s</en>
+            <de>Feld %s düngen</de>
+            <fr>Fertiliser le champ %s</fr>
+        </text>
+        <text name="fa_t_sow">
+            <en>Sow field %s</en>
+            <de>Feld %s bestellen</de>
+            <fr>Semer le champ %s</fr>
+        </text>
+        <text name="fa_t_lime">
+            <en>Lime field %s</en>
+            <de>Feld %s kalken</de>
+            <fr>Chauler le champ %s</fr>
+        </text>
+        <text name="fa_t_plow">
+            <en>Plow field %s</en>
+            <de>Feld %s pflügen</de>
+            <fr>Labourer le champ %s</fr>
+        </text>
+        <text name="fa_t_soil">
+            <en>Rest soil on field %s</en>
+            <de>Feld %s: Boden erholen lassen</de>
+            <fr>Champ %s : reposer le sol</fr>
+        </text>
+        <text name="fa_d_soil">
+            <en>legume or grass next</en>
+            <de>als Nächstes Leguminose/Gras</de>
+            <fr>ensuite légumineuse/herbe</fr>
+        </text>
+        <text name="fa_t_barnfull">
+            <en>Barn full: %s</en>
+            <de>Stall voll: %s</de>
+            <fr>Étable pleine : %s</fr>
+        </text>
+        <text name="fa_t_overaged">
+            <en>Sell animals: %s</en>
+            <de>Tiere verkaufen: %s</de>
+            <fr>Vendre des animaux : %s</fr>
+        </text>
+        <text name="fa_t_productivity">
+            <en>Low productivity: %s</en>
+            <de>Geringe Leistung: %s</de>
+            <fr>Faible productivité : %s</fr>
+        </text>
+        <text name="fa_t_food">
+            <en>Refill feed: %s</en>
+            <de>Futter nachlegen: %s</de>
+            <fr>Remettre du fourrage : %s</fr>
+        </text>
+        <text name="fa_t_collect">
+            <en>Empty %s: %s</en>
+            <de>%s leeren: %s</de>
+            <fr>Vider %s : %s</fr>
+        </text>
+        <text name="fa_t_refill">
+            <en>Refill %s: %s</en>
+            <de>%s auffüllen: %s</de>
+            <fr>Remplir %s : %s</fr>
+        </text>
+        <text name="fa_t_low">
+            <en>Running low: %s</en>
+            <de>Knapp: %s</de>
+            <fr>Bientôt épuisé : %s</fr>
+        </text>
+        <text name="fa_t_prodstop">
+            <en>Production stopped: %s</en>
+            <de>Produktion steht: %s</de>
+            <fr>Production à l'arrêt : %s</fr>
+        </text>
+        <text name="fa_t_prodfull">
+            <en>Output full: %s</en>
+            <de>Ausgang voll: %s</de>
+            <fr>Sortie pleine : %s</fr>
+        </text>
+        <text name="fa_t_silofull">
+            <en>Storage almost full: %s</en>
+            <de>Lager fast voll: %s</de>
+            <fr>Stockage presque plein : %s</fr>
+        </text>
+        <text name="fa_t_sell">
+            <en>Good price: %s</en>
+            <de>Guter Preis: %s</de>
+            <fr>Bon prix : %s</fr>
+        </text>
+        <text name="fa_t_plan">
+            <en>Growing area missing: %s</en>
+            <de>Anbaufläche fehlt: %s</de>
+            <fr>Surface manquante : %s</fr>
+        </text>
+        <text name="fa_d_plan_over">
+            <en>production needs more than the farm can grow</en>
+            <de>Produktion braucht mehr, als der Hof anbauen kann</de>
+            <fr>la production demande plus que l'exploitation ne peut cultiver</fr>
+        </text>
+        <text name="fa_d_plan_nofield">
+            <en>no free field fits</en>
+            <de>kein freies Feld passt</de>
+            <fr>aucun champ libre ne convient</fr>
+        </text>
+        <text name="fa_d_plan_part">
+            <en>free: field %s = %.1f ha</en>
+            <de>frei: Feld %s = %.1f ha</de>
+            <fr>libre : champ %s = %.1f ha</fr>
+        </text>
+        <text name="fa_t_repair">
+            <en>Repair: %s</en>
+            <de>Reparieren: %s</de>
+            <fr>Réparer : %s</fr>
+        </text>
+        <text name="fa_d_damage">
+            <en>damage</en>
+            <de>Schaden</de>
+            <fr>usure</fr>
+        </text>
+        <text name="fa_t_refuel">
+            <en>Refuel: %s</en>
+            <de>Tanken: %s</de>
+            <fr>Faire le plein : %s</fr>
+        </text>
+        <text name="fa_t_def">
+            <en>Refill DEF: %s</en>
+            <de>AdBlue auffüllen: %s</de>
+            <fr>Remplir AdBlue : %s</fr>
+        </text>
+
+        <text name="fa_help_p1_fields_t">
+            <en>Fields</en>
+            <de>Felder</de>
+            <fr>Champs</fr>
+        </text>
+        <text name="fa_help_p1_fields">
+            <en>One row per own field: area, current crop (or worked/fallow), soil health with trend arrow, the recommended next crop and its rotation bonus. The line above the list names the products running low with their range (red below 1.5 months); fields whose recommendation delivers one of them carry a "!". Click a field to expand the ranking of all crops with score, bonus and range, followed by an outlook over several seasons. Click "[ collapse ]" to close it.</en>
+            <de>Eine Zeile je eigenem Feld: Fläche, aktuelle Frucht (oder bearbeitet/brach), Bodengesundheit mit Trendpfeil, die empfohlene nächste Frucht und ihr Fruchtfolge-Bonus. Die Zeile über der Liste nennt die Produkte, die zur Neige gehen, mit ihrer Reichweite (rot unter 1,5 Monaten); Felder, deren Empfehlung eines davon liefert, tragen ein „!“. Ein Klick auf ein Feld klappt die Rangliste aller Früchte mit Bewertung, Bonus und Reichweite auf, darunter ein Weitblick über mehrere Saisons. „[ zuklappen ]“ schließt sie wieder.</de>
+            <fr>Une ligne par champ possédé : surface, culture actuelle (ou travaillé/en jachère), santé du sol avec flèche de tendance, la culture suivante conseillée et son bonus de rotation. La ligne au-dessus de la liste indique les produits bientôt épuisés avec leur autonomie (rouge sous 1,5 mois) ; les champs dont la recommandation fournit l'un d'eux portent un « ! ». Un clic sur un champ déplie le classement de toutes les cultures avec note, bonus et autonomie, suivi d'une projection sur plusieurs saisons. « [ réduire ] » le referme.</fr>
+        </text>
+        <text name="fa_help_p1_storage_t">
+            <en>Storage</en>
+            <de>Lager</de>
+            <fr>Stockage</fr>
+        </text>
+        <text name="fa_help_p1_storage">
+            <en>Stock of every storage your farm owns: silos, bunker silos, bale and pallet storages, the input and output stores of your productions and the feed in the troughs as far as your farm stocks that type elsewhere too - storages of other farms are not counted. Grouped into feed, crops, animal products and supplies, with the capacity where the game provides one. Next to it the monthly demand of your animals and running productions, the range (in days, months or years) and a sell tip when a selling point pays clearly above the base price.</en>
+            <de>Bestand aller Lager deines Hofes: Silos, Fahrsilos, Ballen- und Palettenlager, die Ein- und Ausgangslager der Produktionen und das Futter in den Trögen, soweit der Hof diese Sorte auch sonst lagert - Lager anderer Höfe zählen nicht mit. Gruppiert nach Futter, Früchten, Tierprodukten und Betriebsmitteln, mit Maximal-Füllstand, wenn das Spiel einen führt. Daneben der Monatsbedarf deiner Tiere und laufenden Produktionen, die Reichweite (in Tagen, Monaten oder Jahren) und ein Verkaufstipp, wenn eine Verkaufsstelle deutlich über dem Grundpreis zahlt.</de>
+            <fr>Stock de tous les stockages de votre exploitation : silos, silos-couloirs, stockages de balles et de palettes, stocks d'entrée et de sortie des productions et le fourrage dans les auges tant que l'exploitation stocke aussi ce type ailleurs - les stockages des autres exploitations ne comptent pas. Regroupé en fourrage, cultures, produits animaux et fournitures, avec la capacité quand le jeu en indique une. À côté, le besoin mensuel de vos animaux et des productions en cours, l'autonomie (en jours, mois ou années) et un conseil de vente quand un point de vente paie nettement au-dessus du prix de base.</fr>
+        </text>
+        <text name="fa_help_p1_animals_t">
+            <en>Animals and production</en>
+            <de>Tiere und Produktion</de>
+            <fr>Animaux et production</fr>
+        </text>
+        <text name="fa_help_p1_animals">
+            <en>Animals: per barn and pasture the animal type, head count against places and average age, with hints for a full barn or animals past their best selling age; below it the feed demand per feed type with range and, for mixed rations, the TMR ingredients. Production: every own production with its recipes (active or off), inputs, outputs and fill levels; an empty input of a running recipe is shown in red.</en>
+            <de>Tiere: je Stall und Weide Tierart, Bestand zu Plätzen und Durchschnittsalter, mit Hinweisen auf vollen Stall oder Tiere über dem besten Verkaufsalter; darunter der Futterbedarf je Futtersorte mit Reichweite und bei Mischration die TMR-Zutaten. Produktion: jede eigene Produktion mit ihren Rezepten (aktiv oder aus), Ein- und Ausgängen und Füllständen; ein leerer Eingang eines laufenden Rezepts ist rot.</de>
+            <fr>Animaux : par étable et pâturage, l'espèce, l'effectif par rapport aux places et l'âge moyen, avec des indications si l'étable est pleine ou si des animaux dépassent leur meilleur âge de vente ; en dessous, le besoin en fourrage par type avec autonomie et, pour une ration mélangée, les ingrédients TMR. Production : chaque production possédée avec ses recettes (active ou arrêtée), entrées, sorties et niveaux ; une entrée vide d'une recette en cours apparaît en rouge.</fr>
+        </text>
+        <text name="fa_help_p4_title">
+            <en>Tasks</en>
+            <de>Aufgaben</de>
+            <fr>Tâches</fr>
+        </text>
+        <text name="fa_help_p4_intro">
+            <en>The Tasks area is the farm's to-do list. When you open it, the mod checks fields, animals, storage, productions and machines and lists what needs doing now - sorted into URGENT (red), SOON (yellow) and NOTES (blue). Each row shows the task, a value (area, fill level, range), a detail and the status.</en>
+            <de>Der Bereich Aufgaben ist der Aufgabenzettel des Hofes. Beim Öffnen prüft die Mod Felder, Tiere, Lager, Produktionen und Maschinen und listet, was jetzt zu tun ist - sortiert nach DRINGEND (rot), BALD (gelb) und HINWEISE (blau). Jede Zeile zeigt die Aufgabe, einen Wert (Fläche, Füllstand, Reichweite), ein Detail und den Status.</de>
+            <fr>La rubrique Tâches est la liste des choses à faire de la ferme. À l'ouverture, le mod contrôle champs, animaux, stockage, productions et machines et liste ce qu'il faut faire maintenant - classé en URGENT (rouge), BIENTÔT (jaune) et À NOTER (bleu). Chaque ligne indique la tâche, une valeur (surface, niveau, autonomie), un détail et le statut.</fr>
+        </text>
+        <text name="fa_help_p4_fields_t">
+            <en>Field tasks</en>
+            <de>Feldarbeiten</de>
+            <fr>Travaux des champs</fr>
+        </text>
+        <text name="fa_help_p4_fields">
+            <en>Field work is grouped per field in the order you really do it: mulch stubble, plowing, cultivating, liming, fertilizing, sowing - and while the crop grows weed control, rolling, fertilizing. Harvest and a withered crop always come first. One line per field shows the whole sequence and the crop to be sown; clicking that line opens the single steps with their values and "step 2 of 3". Each field is measured at five points; a step appears when at least two of them are affected. A step never blocks a later one: the steps are derived from the field itself every time, so whatever you skip is simply gone, and what is still missing stays. With Precision Farming the fertilizing step compares the nitrogen in the ground with the need of the crop and only reports a real shortfall; liming keeps using the lime counter of the game. Weeds, rolling, fertilizing, liming and plowing can be switched off in the settings. Fields with soil health below 35 % get a hint to grow a legume or grass next.</en>
+            <de>Feldarbeiten stehen je Feld in der Reihenfolge, in der man sie wirklich macht: Stoppel häckseln, pflügen, grubbern, kalken, düngen, bestellen - und während des Wachstums Unkraut, walzen, düngen. Erntereife und verdorrte Bestände stehen immer vorn. Eine Zeile je Feld zeigt die ganze Folge und die Frucht, die gesät werden soll; ein Klick auf diese Zeile öffnet die einzelnen Schritte mit ihren Werten und "Schritt 2 von 3". Jedes Feld wird an fünf Punkten gemessen; ein Schritt erscheint, wenn mindestens zwei davon betroffen sind. Ein Schritt blockiert nie einen späteren: Die Schritte werden jedes Mal neu aus dem Feld abgeleitet, Übersprungenes ist damit einfach weg, und was weiter fehlt, bleibt stehen. Mit Precision Farming vergleicht der Dünge-Schritt den Stickstoff im Boden mit dem Bedarf der Frucht und meldet nur einen echten Mangel; der Kalk läuft weiter über den Kalkzähler des Spiels. Unkraut, Walzen, Düngen, Kalken und Pflügen lassen sich in den Einstellungen abschalten. Felder mit Bodengesundheit unter 35 % bekommen den Hinweis, als Nächstes Leguminose oder Gras anzubauen.</de>
+            <fr>Les travaux aux champs sont regroupés par champ dans l'ordre réel : broyer le chaume, labourer, déchaumer, chauler, fertiliser, semer - et pendant la croissance désherber, rouler, fertiliser. La récolte et une culture flétrie passent toujours en premier. Une ligne par champ montre toute la suite et la culture à semer ; un clic sur cette ligne ouvre les étapes avec leurs valeurs et "étape 2 sur 3". Chaque champ est mesuré en cinq points ; une étape apparaît dès que deux d'entre eux sont concernés. Une étape n'en bloque jamais une suivante : les étapes sont déduites du champ à chaque fois, ce que vous sautez disparaît donc, et ce qui manque encore reste. Avec Precision Farming, l'étape de fertilisation compare l'azote du sol au besoin de la culture et ne signale qu'un vrai manque ; le chaulage utilise toujours le compteur de chaux du jeu. Désherbage, roulage, fertilisation, chaulage et labour peuvent être désactivés dans les réglages. Les champs dont la santé du sol est sous 35 % reçoivent le conseil de semer ensuite une légumineuse ou de l'herbe.</fr>
+        </text>
+        <text name="fa_help_p4_farm_t">
+            <en>Animals, storage and production</en>
+            <de>Tiere, Lager und Produktion</de>
+            <fr>Animaux, stockage et production</fr>
+        </text>
+        <text name="fa_help_p4_farm">
+            <en>Trough almost empty, water or straw below 15 %, manure, slurry, milk or pallets above 85 % (urgent from 98 %), barn full, animals past their best selling age and low productivity. Goods with less than 1.5 months of range, stopped productions with an empty input, full production outputs (unless set to direct sale or delivery) and silos from 90 % fill level.</en>
+            <de>Trog fast leer, Wasser oder Stroh unter 15 %, Mist, Gülle, Milch oder Paletten über 85 % (ab 98 % dringend), Stall voll, Tiere über dem besten Verkaufsalter und geringe Leistung. Waren mit weniger als 1,5 Monaten Reichweite, stehende Produktionen mit leerem Eingang, volle Produktionsausgänge (außer bei Direktverkauf oder Auslieferung) und Silos ab 90 % Füllstand.</de>
+            <fr>Auge presque vide, eau ou paille sous 15 %, fumier, lisier, lait ou palettes au-dessus de 85 % (urgent dès 98 %), étable pleine, animaux au-delà de leur meilleur âge de vente et faible productivité. Marchandises avec moins de 1,5 mois d'autonomie, productions à l'arrêt faute d'entrée, sorties de production pleines (sauf vente directe ou livraison) et silos remplis à 90 % ou plus.</fr>
+        </text>
+        <text name="fa_help_p4_machines_t">
+            <en>Machines</en>
+            <de>Maschinen</de>
+            <fr>Machines</fr>
+        </text>
+        <text name="fa_help_p4_machines">
+            <en>Own vehicles and implements from 60 % damage (urgent from 80 %), fuel - diesel, electricity or methane - below 20 % (urgent below 8 %) and DEF below 8 %.</en>
+            <de>Eigene Fahrzeuge und Geräte ab 60 % Schaden (ab 80 % dringend), Kraftstoff - Diesel, Strom oder Methan - unter 20 % (unter 8 % dringend) und AdBlue unter 8 %.</de>
+            <fr>Véhicules et outils possédés à partir de 60 % d'usure (urgent dès 80 %), carburant - diesel, électricité ou méthane - sous 20 % (urgent sous 8 %) et AdBlue sous 8 %.</fr>
+        </text>
+        <text name="fa_help_p4_plan_t">
+            <en>Crop planning and market</en>
+            <de>Anbau und Markt</de>
+            <fr>Cultures et marché</fr>
+        </text>
+        <text name="fa_help_p4_plan">
+            <en>The yearly demand of all animals and productions is compared with storage and the crops already growing. If something is missing, the task says how many hectares of which crop still need to be sown and on which free fields the recommendation fits. When a selling point pays at least 10 % above the base price, a sell hint appears.</en>
+            <de>Der Jahresbedarf aller Tiere und Produktionen wird gegen Lager und bereits wachsende Felder gerechnet. Fehlt etwas, nennt die Aufgabe, wie viele Hektar welcher Frucht noch gesät werden müssen und auf welchen freien Feldern die Empfehlung passt. Zahlt eine Verkaufsstelle mindestens 10 % über dem Grundpreis, erscheint ein Verkaufshinweis.</de>
+            <fr>Le besoin annuel de tous les animaux et productions est comparé au stock et aux cultures déjà en place. S'il manque quelque chose, la tâche indique combien d'hectares de quelle culture restent à semer et sur quels champs libres la recommandation convient. Quand un point de vente paie au moins 10 % au-dessus du prix de base, un conseil de vente apparaît.</fr>
+        </text>
+        <text name="fa_help_p4_use_t">
+            <en>Taking over</en>
+            <de>Übernehmen</de>
+            <fr>Prendre en charge</fr>
+        </text>
+        <text name="fa_help_p4_use">
+            <en>Whether a task exists is decided by the game alone. The list updates itself every few seconds while the page is open: as soon as the work is done - field harvested, trough filled, silo emptied - the task disappears, nothing is collected. Clicking a task takes it over: your name appears in the status column for every player. Another click hands it back, so a wrong click is undone at once. The name stays only as long as the task exists; when the same reason comes up again later (next harvest), the task starts open. A click on a field line opens or closes its steps - taking a task over always happens on the single step, never on the field line. Optional field work can be switched off: the Settings area has a switch for rolling, weed control, fertilizing, liming and plowing. OFF means that job never shows up in the task list; the setting applies to the whole farm.</en>
+            <de>Ob eine Aufgabe besteht, entscheidet allein das Spiel. Bei geöffneter Seite aktualisiert sich die Liste alle paar Sekunden von selbst: Sobald die Arbeit getan ist - Feld geerntet, Trog gefüllt, Silo geleert -, verschwindet die Aufgabe, es wird nichts gesammelt. Ein Klick auf eine Aufgabe übernimmt sie: In der Statusspalte steht dann bei allen Mitspielern dein Name. Ein weiterer Klick gibt sie zurück, ein Fehlklick ist also sofort rückgängig. Der Name bleibt nur, solange die Aufgabe besteht; tritt derselbe Anlass später erneut auf (nächste Ernte), beginnt die Aufgabe wieder offen. Ein Klick auf eine Feldzeile öffnet oder schließt deren Schritte - übernommen wird immer der einzelne Schritt, nie die Feldzeile. Freiwillige Feldarbeiten lassen sich abschalten: Im Bereich Einstellungen steht für Walzen, Unkraut, Düngen, Kalken und Pflügen je ein Schalter. AUS heißt, diese Arbeit taucht gar nicht mehr im Aufgabenzettel auf; die Einstellung gilt für den ganzen Hof.</de>
+            <fr>C'est le jeu seul qui décide si une tâche existe. Tant que la page est ouverte, la liste se met à jour toutes les quelques secondes : dès que le travail est fait - champ récolté, auge remplie, silo vidé -, la tâche disparaît, rien n'est conservé. Un clic sur une tâche la prend en charge : votre nom apparaît dans la colonne statut pour tous les joueurs. Un second clic la rend, une erreur de clic s'annule donc aussitôt. Le nom ne reste que tant que la tâche existe ; si la même cause revient plus tard (récolte suivante), la tâche repart ouverte. Un clic sur une ligne de champ ouvre ou ferme ses étapes - la prise en charge se fait toujours sur l'étape, jamais sur la ligne du champ. Les travaux facultatifs peuvent être désactivés : la rubrique Réglages propose un interrupteur pour le roulage, le désherbage, la fertilisation, le chaulage et le labour. Désactivé, ce travail n'apparaît plus du tout dans les tâches ; le réglage vaut pour toute l'exploitation.</fr>
+        </text>
+        <text name="fa_help_p4_mp_t">
+            <en>Multiplayer</en>
+            <de>Mehrspieler</de>
+            <fr>Multijoueur</fr>
+        </text>
+        <text name="fa_help_p4_mp">
+            <en>Everyone sees the tasks of their own farm. When a player takes over a task, all other players on that farm see it immediately - so two people do not work the same field. The server keeps the status and saves it with the savegame.</en>
+            <de>Jeder sieht die Aufgaben seines eigenen Hofes. Übernimmt ein Spieler eine Aufgabe, sehen das alle Mitspieler des Hofes sofort - so arbeiten nicht zwei am selben Feld. Der Server verwaltet den Status und speichert ihn mit dem Spielstand.</de>
+            <fr>Chacun voit les tâches de sa propre ferme. Quand un joueur prend une tâche, tous les autres joueurs de la ferme le voient aussitôt - deux personnes ne travaillent donc pas le même champ. Le serveur gère le statut et l'enregistre avec la sauvegarde.</fr>
+        </text>
+        <text name="fa_help_p5_title">
+            <en>Crop selection</en>
+            <de>Früchte-Auswahl</de>
+            <fr>Choix des cultures</fr>
+        </text>
+        <text name="fa_tab_finance">
+            <en>Finances</en>
+            <de>Finanzen</de>
+            <fr>Finances</fr>
+        </text>
+        <text name="fa_fin_none">
+            <en>Farm Economy is not installed.</en>
+            <de>Agrar-Ökonomie (Farm Economy) ist nicht installiert.</de>
+            <fr>Économie Agricole (Farm Economy) n'est pas installé.</fr>
+        </text>
+        <text name="fa_help_p1_finance_t">
+            <en>Finances</en>
+            <de>Finanzen</de>
+            <fr>Finances</fr>
+        </text>
+        <text name="fa_help_p1_finance">
+            <en>Appears when the Farm Economy mod is installed as well. It shows the farm's position - net worth, balance, loan, value of vehicles, buildings and land, areas - and income, expenses, result and investments of the current in-game year by group, each against the same months of the previous year. Green is better than last year, red worse. The figures are recorded by Farm Economy from its installation onwards, so the first comparison appears in the following in-game year. Both mods are independent: Farm Overview runs without Farm Economy (then this area is simply missing), and Farm Economy runs without Farm Overview (it keeps recording, the figures just are not shown).</en>
+            <de>Erscheint, wenn zusätzlich die Mod Agrar-Ökonomie (Farm Economy) installiert ist. Er zeigt den Stand des Betriebs - Betriebsvermögen, Kontostand, Kredit, Wert von Fahrzeugen, Gebäuden und Land, Flächen - sowie Einnahmen, Ausgaben, Ergebnis und Investitionen des laufenden Spieljahres nach Gruppen, jeweils gegen dieselben Monate des Vorjahres. Grün ist besser als im Vorjahr, rot schlechter. Die Zahlen zeichnet Agrar-Ökonomie ab ihrer Installation auf; der erste Vergleich erscheint deshalb im folgenden Spieljahr. Beide Mods sind eigenständig: Die Betriebsübersicht läuft ohne Agrar-Ökonomie (dann fehlt nur dieser Bereich), und Agrar-Ökonomie läuft ohne Betriebsübersicht (sie zeichnet weiter auf, die Zahlen werden nur nicht angezeigt).</de>
+            <fr>Apparaît quand le mod Économie Agricole (Farm Economy) est aussi installé. Elle montre la situation de l'exploitation - patrimoine net, solde, prêt, valeur des véhicules, bâtiments et terres, surfaces - ainsi que revenus, dépenses, résultat et investissements de l'année de jeu en cours par groupe, comparés aux mêmes mois de l'année précédente. Vert signifie mieux que l'an dernier, rouge moins bien. Les chiffres sont enregistrés par Économie Agricole depuis son installation ; la première comparaison apparaît donc l'année de jeu suivante. Les deux mods sont indépendants : l'Aperçu de l'exploitation fonctionne sans Économie Agricole (seule cette rubrique manque), et Économie Agricole fonctionne sans l'Aperçu (il continue d'enregistrer, les chiffres ne sont simplement pas affichés).</fr>
+        </text>
+        <text name="fa_set_section_crops">
+            <en>CROPS FOR RECOMMENDATIONS</en>
+            <de>FRÜCHTE FÜR EMPFEHLUNGEN</de>
+            <fr>CULTURES POUR LES RECOMMANDATIONS</fr>
+        </text>
+        <text name="fa_d_buy">
+            <en>Buy or produce</en>
+            <de>Kaufen oder herstellen</de>
+            <fr>Acheter ou produire</fr>
+        </text>
+        <text name="fa_d_ownProduce">
+            <en>From the barn - throttle plant</en>
+            <de>Fällt im Stall an - Anlage drosseln</de>
+            <fr>Vient de l'étable - réduire l'usine</fr>
+        </text>
+        <text name="fa_d_perennial">
+            <en>Perennial - plant more trees</en>
+            <de>Dauerkultur - Bäume pflanzen</de>
+            <fr>Culture pérenne - planter des arbres</fr>
+        </text>
+    </l10n>
+
+
+
+    <extraSourceFiles>
+        <sourceFile filename="scripts/FarmOverviewHelp.lua"/>
+        <sourceFile filename="scripts/CropRotationData.lua"/>
+        <sourceFile filename="scripts/FieldAnalyzer.lua"/>
+        <sourceFile filename="scripts/BodengesundheitSyncEvent.lua"/>
+        <sourceFile filename="scripts/BodengesundheitRequestEvent.lua"/>
+        <sourceFile filename="scripts/BodengesundheitCfgEvent.lua"/>
+        <sourceFile filename="scripts/CropSelectionEvent.lua"/>
+        <sourceFile filename="scripts/FruitMemoryEvent.lua"/>
+        <sourceFile filename="scripts/Bodengesundheit.lua"/>
+        <sourceFile filename="scripts/StorageAnalyzer.lua"/>
+        <sourceFile filename="scripts/AnimalAnalyzer.lua"/>
+        <sourceFile filename="scripts/ProductionAnalyzer.lua"/>
+        <sourceFile filename="scripts/RecommendationEngine.lua"/>
+        <sourceFile filename="scripts/ForesightPlanner.lua"/>
+        <sourceFile filename="scripts/FruchtfolgeAdvisor.lua"/>
+        <sourceFile filename="scripts/FruchtfolgeAdvisorDialog.lua"/>
+        <sourceFile filename="scripts/TaskState.lua"/>
+        <sourceFile filename="scripts/TaskStateEvent.lua"/>
+        <sourceFile filename="scripts/TaskAnalyzer.lua"/>
+        <sourceFile filename="scripts/FinanceBridge.lua"/>
+        <sourceFile filename="scripts/YieldBridge.lua"/>
+        <sourceFile filename="scripts/FieldLedger.lua"/>
+        <sourceFile filename="scripts/FarmOverviewPage.lua"/>
+    </extraSourceFiles>
+</modDesc>
