@@ -273,11 +273,43 @@ local function subtypInfo(idx)
     if type(idx) ~= "number" then return nil end
     if AnimalAnalyzer._subCache == nil then
         AnimalAnalyzer._subCache = {}
+        local maennchen = {}
         local as = g_currentMission and g_currentMission.animalSystem
         if as ~= nil and type(as.subTypes) == "table" then
             for i, sub in pairs(as.subTypes) do
                 local eintrag = { name = nil, peakPrice = 0, peakAge = nil,
-                                  wurfDauer = tonumber(sub.reproductionDurationMonth) }
+                                  wurfDauer = tonumber(sub.reproductionDurationMonth),
+                                  zuchtAlter = tonumber(sub.reproductionMinAgeMonth),
+                                  kurven = {}, leistungMax = 0 }
+
+                local output = sub.output
+                if type(output) == "table" then
+                    for _, art in ipairs({ "milk", "pallets" }) do
+                        local o = output[art]
+                        if type(o) == "table" and type(o.curve) == "table" and o.curve.get ~= nil then
+                            eintrag.kurven[#eintrag.kurven + 1] = o.curve
+                        end
+                    end
+                end
+                for age = 0, 120 do
+                    local summe = 0
+                    for _, kurve in ipairs(eintrag.kurven) do
+                        local v = kurve:get(age)
+                        if type(v) == "number" then summe = summe + v end
+                    end
+                    if summe > eintrag.leistungMax then
+                        eintrag.leistungMax = summe
+                        eintrag.leistungAlter = age
+                    end
+                end
+
+                if type(sub.malePart) == "string" and as.getSubTypeByName ~= nil then
+                    local mann = as:getSubTypeByName(sub.malePart)
+                    if mann ~= nil and mann.subTypeIndex ~= nil then
+                        eintrag.maennchenIdx = mann.subTypeIndex
+                        maennchen[mann.subTypeIndex] = true
+                    end
+                end
 
                 if sub.fillTypeIndex ~= nil and g_fillTypeManager ~= nil
                         and g_fillTypeManager.getFillTypeTitleByIndex ~= nil then
@@ -299,6 +331,9 @@ local function subtypInfo(idx)
                 end
                 AnimalAnalyzer._subCache[i] = eintrag
             end
+            for i, eintrag in pairs(AnimalAnalyzer._subCache) do
+                eintrag.maennlich = maennchen[i] == true
+            end
         end
     end
     return AnimalAnalyzer._subCache[idx]
@@ -316,7 +351,9 @@ function AnimalAnalyzer.gruppenAufbereiten(gruppen)
 
     local zusammen, reihenfolge = {}, {}
     for _, g in ipairs(gruppen) do
-        local schluessel = string.format("%s#%s", tostring(g.subIndex), tostring(g.age))
+        local schluessel = string.format("%s#%s#%s#%s", tostring(g.subIndex), tostring(g.age),
+            tostring(g.gesundheit ~= nil and math.floor(g.gesundheit + 0.5) or "-"),
+            tostring(g.inseminiert == true))
         local z = zusammen[schluessel]
         if z == nil then
             zusammen[schluessel] = g
@@ -345,7 +382,19 @@ function AnimalAnalyzer.gruppenAufbereiten(gruppen)
             g.rasse     = info.name
             g.peakAge   = info.peakAge
             g.peakPrice = info.peakPrice
+            g.maennlich = info.maennlich
+            g.zuchtAlter = info.zuchtAlter
+            g.maennchenIdx = info.maennchenIdx
+            g.leistungMax = info.leistungMax
+            g.leistungAlter = info.leistungAlter
+            g.leistung = 0
+            for _, kurve in ipairs(info.kurven) do
+                local v = kurve:get(g.age or 0)
+                if type(v) == "number" then g.leistung = g.leistung + v end
+            end
         end
+        g.zuchtreif = g.zuchtAlter ~= nil and (g.age or 0) >= g.zuchtAlter
+        g.tragend = g.inseminiert == true or (g.repro ~= nil and g.repro > 0)
         -- Ohne getSellPrice bleibt der Wert leer; geraten wird nichts.
         if g.wert ~= nil and g.num > 0 then
             g.wertGesamt = g.wert * g.num
@@ -370,50 +419,28 @@ function AnimalAnalyzer.gruppenAufbereiten(gruppen)
     return gruppen
 end
 
---- Was ist mit diesem Stall gerade los? EINE Quelle fuer Aufgabenliste und
---- Tabelle, damit beide dasselbe sagen. Reihenfolge nach Dringlichkeit:
----   zualt    - eine Gruppe ist ueber dem Hoechstpreis, der Wert verfaellt
----   peakvoll - Bestpreis UND Stall voll: der eine Moment zum Abverkauf
----   peak     - eine Gruppe steht im Preisfenster
----   voll     - Stall voll, aber Preis noch nicht so weit
----   quali    - Leistung niedrig; da hilft Futter, kein Verkauf
---- Die Leistungsschwellen stammen aus dem alten Tier-Renderer, der seit der
---- Umstellung auf die Tabelle nicht mehr gezeichnet wird.
 AnimalAnalyzer.LEISTUNG_NIEDRIG = 0.55
+
+function AnimalAnalyzer.subtypName(idx)
+    local info = subtypInfo(idx)
+    return info ~= nil and info.name or nil
+end
 
 function AnimalAnalyzer.stallLage(hub)
     if type(hub) ~= "table" then return nil end
 
-    local voll = (hub.maxCount or 0) > 0 and (hub.count or 0) >= hub.maxCount
-
-    local alt, altVerlust, altNum = nil, 0, 0
-    local peak, peakNum, peakWert = nil, 0, 0
-    for _, g in ipairs(hub.gruppen or {}) do
-        local lage = AnimalAnalyzer.verkaufsLage(g.age, g.peakAge)
-        if lage == "drueber" then
-            alt = true
-            altNum = altNum + (g.num or 0)
-            -- Was der Wartezeit zum Opfer gefallen ist: Abstand zum Hoechstpreis
-            if g.peakPrice ~= nil and g.wert ~= nil and g.peakPrice > g.wert then
-                altVerlust = altVerlust + (g.peakPrice - g.wert) * (g.num or 0)
-            end
-        elseif lage == "fenster" then
-            peak = true
-            peakNum  = peakNum + (g.num or 0)
-            peakWert = peakWert + (g.wertGesamt or 0)
-        end
+    local plan = hub.plan
+    if plan == nil and AnimalSalePlan ~= nil then
+        plan = AnimalSalePlan.planen(hub)
     end
-
-    if alt then
-        return { art = "zualt", num = altNum, verlust = altVerlust }
+    if plan ~= nil and plan.verkaufen > 0 then
+        return { art = "verkauf", num = plan.verkaufen, wert = plan.wert, grund = plan.haupt,
+                 dringend = plan.haupt == "platz" }
     end
-    if peak and voll then
-        return { art = "peakvoll", num = peakNum, wert = peakWert }
+    if plan ~= nil and #plan.nachkauf > 0 then
+        return { art = "nachkauf", liste = plan.nachkauf }
     end
-    if peak then
-        return { art = "peak", num = peakNum, wert = peakWert }
-    end
-    if voll then
+    if (hub.maxCount or 0) > 0 and (hub.count or 0) >= hub.maxCount then
         return { art = "voll" }
     end
     if hub.productivity ~= nil and (hub.count or 0) > 0
@@ -886,6 +913,7 @@ function AnimalAnalyzer.getHusbandries(farmId)
                                     if cl.getSellPrice ~= nil then wert = cl:getSellPrice() end
                                     gruppen[#gruppen + 1] = {
                                         age = cAge, num = cNum, subIndex = idx, wert = wert,
+                                        gesundheit = tonumber(cl.health),
                                         -- Nachwuchs: das Basisspiel fuehrt einen
                                         -- Fortschritt in Prozent, EnhancedAnimalSystem
                                         -- zaehlt stattdessen Monate seit dem letzten
@@ -988,6 +1016,7 @@ function AnimalAnalyzer.getHusbandries(farmId)
 
                         table.insert(result, {
                             name            = hubName,
+                            placeable       = p,
                             animalType      = animalTypeName,
                             count           = count,
                             maxCount        = maxCount,
@@ -1018,6 +1047,12 @@ function AnimalAnalyzer.getHusbandries(farmId)
         end
         return tostring(a.name) < tostring(b.name)
     end)
+
+    if AnimalSalePlan ~= nil then
+        for _, hub in ipairs(result) do
+            AnimalSalePlan.planen(hub)
+        end
+    end
 
     return result
 end

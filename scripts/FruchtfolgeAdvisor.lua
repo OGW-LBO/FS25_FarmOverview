@@ -31,6 +31,37 @@ end
 function FruchtfolgeAdvisor.referenceL10n()
     if g_i18n == nil or g_i18n.getText == nil then return end
     g_i18n:getText("fa_title")
+    g_i18n:getText("fa_herd_sell")
+    g_i18n:getText("fa_h_agehealth")
+    g_i18n:getText("fa_h_advice")
+    g_i18n:getText("fa_stall_ok")
+    g_i18n:getText("fa_stall_sell")
+    g_i18n:getText("fa_stall_buy")
+    g_i18n:getText("fa_stall_full")
+    g_i18n:getText("fa_stall_open")
+    g_i18n:getText("fa_unit_mo_short")
+    g_i18n:getText("fa_sell_of")
+    g_i18n:getText("fa_keep_line")
+    g_i18n:getText("fa_buy_line")
+    g_i18n:getText("fa_g_platz")
+    g_i18n:getText("fa_g_maennchen")
+    g_i18n:getText("fa_g_leistung")
+    g_i18n:getText("fa_g_drueber")
+    g_i18n:getText("fa_g_fenster")
+    g_i18n:getText("fa_b_leistung")
+    g_i18n:getText("fa_b_nachwuchs")
+    g_i18n:getText("fa_b_zucht")
+    g_i18n:getText("fa_b_ersatz")
+    g_i18n:getText("fa_b_tragend")
+    g_i18n:getText("fa_b_jung")
+    g_i18n:getText("fa_b_ersatzFehlt")
+    g_i18n:getText("fa_b_pferd")
+    g_i18n:getText("fa_buy_maennchen")
+    g_i18n:getText("fa_buy_ersatz")
+    g_i18n:getText("fa_buy_frei")
+    g_i18n:getText("fa_t_sellplan")
+    g_i18n:getText("fa_t_buyanimals")
+    g_i18n:getText("fa_d_allneeded")
     g_i18n:getText("fa_tab_fields")
     g_i18n:getText("fa_tab_storage")
     g_i18n:getText("fa_tab_animals")
@@ -1448,6 +1479,69 @@ function FruchtfolgeAdvisor.getFieldRows(expandedIdx)
     return out
 end
 
+local GRUND_TEXT = {
+    platz     = { "fa_g_platz", "no space" },
+    maennchen = { "fa_g_maennchen", "surplus male animal", arten = {
+        COW = "fa_g_maennchen_COW", PIG = "fa_g_maennchen_PIG", SHEEP = "fa_g_maennchen_SHEEP",
+        CHICKEN = "fa_g_maennchen_CHICKEN", HORSE = "fa_g_maennchen_HORSE",
+    } },
+    leistung  = { "fa_g_leistung", "output dropping" },
+    drueber   = { "fa_g_drueber", "past best price" },
+    fenster   = { "fa_g_fenster", "best price now" },
+}
+local BEHALT_TEXT = {
+    leistung    = { "fa_b_leistung", "producing" },
+    nachwuchs   = { "fa_b_nachwuchs", "coming into production" },
+    zucht       = { "fa_b_zucht", "breeding" },
+    ersatz      = { "fa_b_ersatz", "spare breeder" },
+    zuchtJung   = { "fa_b_zuchtJung", "future breeder" },
+    tragend     = { "fa_b_tragend", "pregnant" },
+    jung        = { "fa_b_jung", "growing" },
+    ersatzFehlt = { "fa_b_ersatzFehlt", "kept until replaced" },
+    pferd       = { "fa_b_pferd", "horses" },
+}
+local NACHKAUF_TEXT = {
+    maennchen = { "fa_buy_maennchen", "no breeding male", arten = {
+        COW = "fa_buy_maennchen_COW", PIG = "fa_buy_maennchen_PIG", SHEEP = "fa_buy_maennchen_SHEEP",
+        CHICKEN = "fa_buy_maennchen_CHICKEN", HORSE = "fa_buy_maennchen_HORSE",
+    } },
+    ersatz    = { "fa_buy_ersatz", "replacement for low output" },
+    frei      = { "fa_buy_frei", "free places, no offspring" },
+}
+
+local function textAus(tabelle, schluessel, art)
+    local e = tabelle[schluessel or ""]
+    if e == nil then return "" end
+    local text = L(e[1], e[2])
+    local jeArt = e.arten ~= nil and e.arten[tostring(art or "")] or nil
+    if jeArt ~= nil then
+        return L(jeArt, text)
+    end
+    return text
+end
+
+function FruchtfolgeAdvisor.grundText(grund, art) return textAus(GRUND_TEXT, grund, art) end
+function FruchtfolgeAdvisor.behaltText(grund) return textAus(BEHALT_TEXT, grund) end
+function FruchtfolgeAdvisor.nachkaufText(grund, art) return textAus(NACHKAUF_TEXT, grund, art) end
+
+function FruchtfolgeAdvisor.stallOeffnen(p)
+    local mission = g_currentMission
+    if p == nil or mission == nil or AnimalScreen == nil or AnimalScreen.show == nil then
+        return false
+    end
+    if mission.getHasPlayerPermission ~= nil and not mission:getHasPlayerPermission("tradeAnimals") then
+        return false
+    end
+    if p.getOwnerFarmId ~= nil and mission.getFarmId ~= nil and p:getOwnerFarmId() ~= mission:getFarmId() then
+        return false
+    end
+    if g_gui ~= nil then
+        g_gui:changeScreen(nil)
+    end
+    AnimalScreen.show(p, nil, false)
+    return true
+end
+
 -- Lokalisierter Tierart-Name (COW -> Kühe/Cows); Fallback: Rohtyp.
 -- Volle l10n-Keys als Literale, damit der ModHub-ObsoleteFiles-Check sie findet.
 local ANIMAL_L10N = {
@@ -1475,147 +1569,143 @@ local function animalRowsUnified()
     if an.husbandries ~= nil and #an.husbandries > 0 then
         out[#out + 1] = { section = L("fa_sec_herd") }
 
-        -- Kopfzahl vor der Tabelle: was die Herde wert ist und wie viele Tiere
-        -- gerade im besten Preisfenster stehen. Das ist die Zahl, wegen der man
-        -- den Bereich ueberhaupt oeffnet.
-        local herdeWert, imFenster, fensterWert = nil, 0, 0
+        local herdeWert, zumVerkauf, verkaufWert = nil, 0, 0
         for _, hub in ipairs(an.husbandries) do
             for _, g in ipairs(hub.gruppen or {}) do
                 if g.wertGesamt ~= nil then herdeWert = (herdeWert or 0) + g.wertGesamt end
-                local lage = AnimalAnalyzer.verkaufsLage ~= nil
-                    and AnimalAnalyzer.verkaufsLage(g.age, g.peakAge) or nil
-                if lage == "fenster" then
-                    imFenster   = imFenster + (g.num or 0)
-                    fensterWert = fensterWert + (g.wertGesamt or 0)
-                end
+            end
+            if hub.plan ~= nil then
+                zumVerkauf  = zumVerkauf + hub.plan.verkaufen
+                verkaufWert = verkaufWert + hub.plan.wert
             end
         end
         if herdeWert ~= nil then
             local rechts = ""
-            if imFenster > 0 then
-                rechts = F("fa_herd_ready", "%d animals at best price = %s",
-                    imFenster, FruchtfolgeAdvisor.fmtMoney(fensterWert))
+            if zumVerkauf > 0 then
+                rechts = F("fa_herd_sell", "%d animals to sell = %s",
+                    zumVerkauf, FruchtfolgeAdvisor.fmtMoney(verkaufWert))
             end
             out[#out + 1] = { cells = {
                 { t = L("fa_herd_value", "Herd value"), col = NR.grey },
                 { t = "" },
                 { t = FruchtfolgeAdvisor.fmtMoney(herdeWert), col = NR.white },
                 { t = "" },
-                { t = rechts, col = (imFenster > 0) and NR.green or NR.grey },
+                { t = rechts, col = (zumVerkauf > 0) and NR.green or NR.grey },
                 { t = "" },
             } }
         end
 
         out[#out + 1] = { head = {
-            L("fa_h_animal"), L("fa_h_count"), L("fa_h_value"), L("fa_h_age"),
-            L("fa_h_sell"), "",
+            L("fa_h_animal"), L("fa_h_count"), L("fa_h_value"), L("fa_h_agehealth", "Age, health"),
+            L("fa_h_advice", "Advice"), "",
         } }
         for _, hub in ipairs(an.husbandries) do
+            local plan = hub.plan or { verkaufen = 0, wert = 0, nachkauf = {} }
             local best = string.format("%d / %d", hub.count or 0, hub.maxCount or 0)
-            local age  = hub.avgAge ~= nil and string.format("%.0f %s", hub.avgAge, L("fa_unit_months", "months")) or "-"
-            -- Eine Quelle fuer Tabelle und Aufgabenzettel (AnimalAnalyzer.stallLage)
-            local hint, hintCol = "", NR.grey
+            local age = "-"
+            if hub.avgAge ~= nil then
+                local monate = math.floor(hub.avgAge + 0.5)
+                age = string.format("%d %s", monate,
+                    monate == 1 and L("fa_unit_month", "month") or L("fa_unit_months", "months"))
+            end
+
+            local hint, hintCol = L("fa_stall_ok", "nothing to sell"), NR.grey
             local lage = AnimalAnalyzer.stallLage ~= nil and AnimalAnalyzer.stallLage(hub) or nil
             if lage ~= nil then
-                if lage.art == "zualt" then
-                    hint, hintCol = F("fa_lage_zualt", "%d past peak", lage.num), NR.red
-                    if (lage.verlust or 0) > 0 then
-                        hint = hint .. " (-" .. FruchtfolgeAdvisor.fmtMoney(lage.verlust) .. ")"
-                    end
-                elseif lage.art == "peakvoll" then
-                    hint, hintCol = F("fa_lage_peakvoll", "sell now: %d at best price, barn full",
-                        lage.num), NR.green
-                elseif lage.art == "peak" then
-                    hint, hintCol = F("fa_lage_peak", "%d at best price", lage.num), NR.green
+                if lage.art == "verkauf" then
+                    hint = F("fa_stall_sell", "sell %d (%s)", lage.num, FruchtfolgeAdvisor.fmtMoney(lage.wert or 0))
+                    hintCol = lage.dringend and NR.red or NR.green
+                elseif lage.art == "nachkauf" then
+                    hint, hintCol = L("fa_stall_buy", "buy animals"), NR.yellow
                 elseif lage.art == "voll" then
-                    hint, hintCol = L("fa_barn_full"), NR.yellow
+                    hint, hintCol = L("fa_stall_full", "full, all needed"), NR.yellow
                 elseif lage.art == "quali" then
                     hint, hintCol = F("fa_lage_quali", "low output %d%% - feed better",
                         math.floor((lage.wert or 0) * 100 + 0.5)), NR.yellow
                 end
             end
 
-            -- Stallwert: Summe ueber die Gruppen, solange das Spiel Preise liefert
             local stallWert = nil
             for _, g in ipairs(hub.gruppen or {}) do
                 if g.wertGesamt ~= nil then stallWert = (stallWert or 0) + g.wertGesamt end
             end
 
-            -- Der Stallname statt der Tierart: wer drei Kuhstaelle hat, sah
-            -- sonst dreimal "Kuehe" und wusste nicht, welcher gemeint ist.
             local wo = hub.name
             if wo == nil or wo == "" then wo = animalName(hub.animalType) end
 
-            out[#out + 1] = { cells = {
+            out[#out + 1] = { stall = hub.placeable, cells = {
                 { t = FruchtfolgeAdvisor.truncate(wo, 34), col = NR.white },
                 { t = best, col = NR.white },
                 { t = stallWert ~= nil and FruchtfolgeAdvisor.fmtMoney(stallWert) or "", col = NR.white },
                 { t = age, col = NR.lblue },
                 { t = hint, col = hintCol },
-                { t = "" },
+                { t = hub.placeable ~= nil and L("fa_stall_open", "open") or "", col = NR.grey },
             } }
 
-            -- Darunter nur die Gruppen, bei denen etwas zu entscheiden ist:
-            -- verkaufsreif oder schon darueber. Die jungen Tiere stehen als
-            -- eine Sammelzeile dahinter - sie brauchen nur Zeit, keine Zeile
-            -- je Jahrgang. Ohne das waren es auf einem gewachsenen Hof ueber
-            -- vierzig Zeilen, und der Tabellenkopf war weggescrollt.
-            local zeigen, jung, jungWert = {}, 0, 0
+            local zeilen = 0
+            local mehr = 0
             for _, g in ipairs(hub.gruppen or {}) do
-                local lage = AnimalAnalyzer.verkaufsLage ~= nil
-                    and AnimalAnalyzer.verkaufsLage(g.age, g.peakAge) or nil
-                if lage == "drueber" or lage == "fenster" then
-                    zeigen[#zeigen + 1] = { g = g, lage = lage }
-                else
-                    jung = jung + (g.num or 0)
-                    jungWert = jungWert + (g.wertGesamt or 0)
+                if (g.verkaufen or 0) > 0 then
+                    if zeilen >= FruchtfolgeAdvisor.MAX_TIERGRUPPEN then
+                        mehr = mehr + 1
+                    else
+                        zeilen = zeilen + 1
+                        local eigen = string.format("%d %s", g.age or 0, L("fa_unit_mo_short", "mo."))
+                        if g.gesundheit ~= nil then
+                            eigen = string.format("%s, %d %%", eigen, math.floor(g.gesundheit + 0.5))
+                        end
+                        local rot = g.grund == "platz" or g.grund == "drueber"
+                        out[#out + 1] = { cells = {
+                            { t = "      " .. tostring(g.rasse or L("fa_unknown_breed", "unknown")), col = NR.lblue },
+                            { t = F("fa_sell_of", "%d of %d", g.verkaufen, g.num or 0), col = rot and NR.red or NR.green },
+                            { t = g.wert ~= nil and (FruchtfolgeAdvisor.fmtMoney(g.wert) .. L("fa_per_head", "/head")) or "",
+                              col = NR.grey },
+                            { t = eigen, col = NR.grey },
+                            { t = FruchtfolgeAdvisor.grundText(g.grund, hub.animalType), col = rot and NR.red or NR.green },
+                            { t = g.wurfIn ~= nil
+                                and F("fa_calving_short", "+%d mo", math.floor(g.wurfIn + 0.5))
+                                or "", col = NR.lblue },
+                        } }
+                    end
                 end
             end
-
-            for i, eintrag in ipairs(zeigen) do
-                if i > FruchtfolgeAdvisor.MAX_TIERGRUPPEN then
-                    local rest = #zeigen - FruchtfolgeAdvisor.MAX_TIERGRUPPEN
-                    out[#out + 1] = { cells = {
-                        { t = string.format("      %s", F("fa_more_groups", "+ %d more", rest)),
-                          col = NR.grey },
-                        { t = "" }, { t = "" }, { t = "" }, { t = "" }, { t = "" },
-                    } }
-                    break
-                end
-
-                local g, lage = eintrag.g, eintrag.lage
-                local rat, ratCol = "", NR.grey
-                if lage == "fenster" then
-                    rat, ratCol = L("fa_sell_peak", "best price now"), NR.green
-                else
-                    rat, ratCol = L("fa_sell_late_short", "past peak"), NR.red
-                end
-
+            if mehr > 0 then
                 out[#out + 1] = { cells = {
-                    { t = string.format("      %d x %s", g.num or 0,
-                        g.rasse or L("fa_unknown_breed", "unknown")), col = NR.lblue },
-                    { t = "" },
-                    { t = g.wert ~= nil and (FruchtfolgeAdvisor.fmtMoney(g.wert) .. L("fa_per_head", "/head")) or "",
-                      col = NR.grey },
-                    { t = string.format("%d %s", g.age or 0, L("fa_unit_months", "months")), col = NR.grey },
-                    { t = rat, col = ratCol },
-                    -- Spalte ist schmal, deshalb nur die Zahl mit Pfeil
-                    { t = g.wurfIn ~= nil
-                        and F("fa_calving_short", "+%d mo", math.floor(g.wurfIn + 0.5))
-                        or "", col = NR.lblue },
+                    { t = "      " .. F("fa_more_groups", "+ %d more", mehr), col = NR.grey },
+                    { t = "" }, { t = "" }, { t = "" }, { t = "" }, { t = "" },
                 } }
             end
 
-            -- Die noch wachsenden Tiere in einer Zeile - aber nur, wenn darueber
-            -- ueberhaupt etwas steht. Wachsen ALLE, sagt die Stallzeile das
-            -- schon mit Bestand und Durchschnittsalter.
-            if jung > 0 and #zeigen > 0 then
+            local behalten, reihenfolge = {}, {}
+            for _, g in ipairs(hub.gruppen or {}) do
+                local n = (g.num or 0) - (g.verkaufen or 0)
+                if n > 0 then
+                    local grund = g.behalten or "jung"
+                    if behalten[grund] == nil then
+                        behalten[grund] = 0
+                        reihenfolge[#reihenfolge + 1] = grund
+                    end
+                    behalten[grund] = behalten[grund] + n
+                end
+            end
+            if #reihenfolge > 0 and (plan.verkaufen > 0 or #(plan.nachkauf or {}) > 0) then
+                for _, grund in ipairs(reihenfolge) do
+                    out[#out + 1] = { cells = {
+                        { t = "      " .. F("fa_keep_line", "keep: %s", FruchtfolgeAdvisor.behaltText(grund)), col = NR.grey },
+                        { t = tostring(behalten[grund]), col = NR.grey },
+                        { t = "" }, { t = "" }, { t = "" }, { t = "" },
+                    } }
+                end
+            end
+
+            for _, k in ipairs(plan.nachkauf or {}) do
+                local name = AnimalAnalyzer.subtypName ~= nil and AnimalAnalyzer.subtypName(k.idx) or nil
                 out[#out + 1] = { cells = {
-                    { t = string.format("      %s", F("fa_growing", "%d still growing", jung)),
-                      col = NR.grey },
-                    { t = "" },
-                    { t = jungWert > 0 and FruchtfolgeAdvisor.fmtMoney(jungWert) or "", col = NR.grey },
+                    { t = "      " .. F("fa_buy_line", "buy: %d x %s", k.num or 0,
+                        tostring(name or L("fa_unknown_breed", "unknown"))), col = NR.yellow },
                     { t = "" }, { t = "" }, { t = "" },
+                    { t = FruchtfolgeAdvisor.nachkaufText(k.grund, hub.animalType), col = NR.yellow },
+                    { t = "" },
                 } }
             end
         end

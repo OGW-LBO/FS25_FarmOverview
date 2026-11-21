@@ -85,6 +85,11 @@
             <GuiElement profile="faListFrame" position="15px -20px" size="1490px 700px">
             <ScrollingLayout profile="fs25_settingsLayout" id="faSettingsLayout" visible="false">
 
+                <Bitmap profile="faSetRow" id="rowNurHofPC" visible="false">
+                    <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="chkNurHofPC" />
+                    <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_nurhofpc" />
+                </Bitmap>
+
                 <Bitmap profile="faSetRow">
                     <BinaryOption profile="fs25_settingsBinaryOption" onClick="onClickCheckbox" id="chkEnabled" />
                     <Text profile="fs25_settingsMultiTextOptionTitle" text="$l10n_fa_set_enabled" />

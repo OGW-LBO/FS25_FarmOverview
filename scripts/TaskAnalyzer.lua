@@ -833,34 +833,29 @@ local function tierAufgaben(cache, farmId)
         local geld = (FruchtfolgeAdvisor ~= nil and FruchtfolgeAdvisor.fmtMoney)
             or function() return "" end
 
-        if lage ~= nil and lage.art == "peakvoll" then
-            add("sellpeak", objKey, TaskAnalyzer.PRIO_URGENT, "animal",
-                F("fa_t_sellpeak", "Best price now: %s", wo),
+        if lage ~= nil and lage.art == "verkauf" then
+            local grund = FruchtfolgeAdvisor ~= nil and FruchtfolgeAdvisor.grundText ~= nil
+                and FruchtfolgeAdvisor.grundText(lage.grund, hub.animalType) or ""
+            add("sellplan", objKey, lage.dringend and TaskAnalyzer.PRIO_URGENT or TaskAnalyzer.PRIO_SOON, "animal",
+                F("fa_t_sellplan", "Sell animals: %s", wo),
                 string.format("%d %s", lage.num or 0, L("fa_unit_animals", "animals")),
-                F("fa_d_peakfull", "barn full, worth %s", geld(lage.wert or 0)))
+                grund .. ", " .. geld(lage.wert or 0))
 
-        elseif lage ~= nil and lage.art == "zualt" then
-            -- Was das Warten gekostet hat, steht als Betrag daneben: eine Zahl
-            -- bleibt besser haften als eine Warnung.
-            local detail = ""
-            if (lage.verlust or 0) > 0 then
-                detail = F("fa_d_lostvalue", "%s below peak", geld(lage.verlust))
-            end
-            add("overaged", objKey, TaskAnalyzer.PRIO_SOON, "animal",
-                F("fa_t_overaged", "Sell animals: %s", wo),
-                string.format("%d %s", lage.num or 0, L("fa_unit_animals", "animals")),
-                detail)
-
-        elseif lage ~= nil and lage.art == "peak" then
-            add("sellpeak", objKey, TaskAnalyzer.PRIO_SOON, "animal",
-                F("fa_t_sellpeak", "Best price now: %s", wo),
-                string.format("%d %s", lage.num or 0, L("fa_unit_animals", "animals")),
-                geld(lage.wert or 0))
+        elseif lage ~= nil and lage.art == "nachkauf" then
+            local k = (lage.liste or {})[1] or {}
+            local name = AnimalAnalyzer.subtypName ~= nil and AnimalAnalyzer.subtypName(k.idx) or nil
+            local grund = FruchtfolgeAdvisor ~= nil and FruchtfolgeAdvisor.nachkaufText ~= nil
+                and FruchtfolgeAdvisor.nachkaufText(k.grund, hub.animalType) or ""
+            add("buyanimals", objKey, TaskAnalyzer.PRIO_INFO, "animal",
+                F("fa_t_buyanimals", "Buy animals: %s", wo),
+                string.format("%d x %s", k.num or 0, tostring(name or "?")),
+                grund)
 
         elseif lage ~= nil and lage.art == "voll" then
             add("barnfull", objKey, TaskAnalyzer.PRIO_SOON, "animal",
                 F("fa_t_barnfull", "Barn full: %s", wo),
-                string.format("%d/%d", hub.count or 0, hub.maxCount or 0), "")
+                string.format("%d/%d", hub.count or 0, hub.maxCount or 0),
+                L("fa_d_allneeded", "all animals needed, expand the barn"))
 
         elseif lage ~= nil and lage.art == "quali" then
             add("productivity", objKey, TaskAnalyzer.PRIO_INFO, "animal",

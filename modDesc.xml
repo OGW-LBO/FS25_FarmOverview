@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <modDesc descVersion="115">
     <author>OGW</author>
-    <version>1.1.0.0</version>
+    <version>1.2.0.0</version>
     <title>
         <en>Farm Overview</en>
         <de>Betriebsübersicht</de>
@@ -11,13 +11,13 @@
         <en><![CDATA[Farm Overview puts your whole farm on one page of the ESC menu - fields, soil health, storage, animals, productions, open tasks and the crops of the map.
 
 TOGETHER WITH FARM ECONOMY
-Farm Overview works on its own. If the Farm Economy mod is installed as well, the additional Finances area shows the year comparison (net worth, income, expenses and result against the previous year).
+Farm Overview works on its own. If the Farm Economy mod is installed as well, the additional Finances area shows the year comparison (net worth, income, expenses and result against the previous year), and the whole overview is also on its farm PC (Ctrl+K). If you only want it there, switch on "Overview only on the farm PC" in the settings; the ESC menu then keeps just the settings.
 
 HOW TO USE
 Press ESC and open the Farm Overview page (the first tab). Switch areas with the tabs at the top:
 - TASKS: what the farm needs right now, sorted by urgency. Field work is grouped per field in the order you really do it - mulch stubble, plow, cultivate, lime, fertilize, sow, and while the crop grows weed control, rolling, fertilizing. One line per field shows the whole sequence and the crop to sow; a click opens the single steps. Further tasks: harvest, sow, roll, lime, fertilize, weeds, feed/water/straw, full manure/slurry/milk, stopped or full productions, full silos, damaged or empty machines, missing growing area and good prices. Finished work disappears by itself; click a task to take it over (your name shows for every player).
 - FIELDS: recommended next crop per field with rotation bonus, soil health and trend; fields that help against a running-low crop are marked. Click a field for its full ranking and a multi-season outlook.
-- ANIMALS: herds, age, feed demand with range, TMR ingredients.
+- ANIMALS: per barn, what should be sold and why - "sell 7 of 8, surplus rooster", best price, output dropping, no space. Laying hens and dairy cows stay while they produce, breeding animals, pregnant animals and young stock are kept, and missing animals show up as a purchase. A click on the barn opens its animal menu to buy and sell. Plus feed demand with range and TMR ingredients.
 - PRODUCTION: recipes with inputs and outputs; empty inputs are flagged.
 - STORAGE: stock of every storage your farm owns, with capacity, monthly demand, range and market tips.
 - FINANCES (with the Farm Economy mod): net worth, balance, loan, income, expenses and result, each against the same period of the previous year.
@@ -30,13 +30,13 @@ Crop data is read from the loaded map, so custom map crops are covered. Multipla
         <de><![CDATA[Die Betriebsübersicht bringt deinen ganzen Hof auf eine Seite im ESC-Menü - Felder, Bodengesundheit, Lager, Tiere, Produktionen, offene Aufgaben und die Früchte der Karte.
 
 ZUSAMMEN MIT AGRAR-ÖKONOMIE
-Die Betriebsübersicht läuft auch allein. Ist zusätzlich die Mod Agrar-Ökonomie (Farm Economy) installiert, zeigt der Bereich Finanzen den Jahresvergleich (Betriebsvermögen, Einnahmen, Ausgaben und Ergebnis gegen das Vorjahr).
+Die Betriebsübersicht läuft auch allein. Ist zusätzlich die Mod Agrar-Ökonomie (Farm Economy) installiert, zeigt der Bereich Finanzen den Jahresvergleich (Betriebsvermögen, Einnahmen, Ausgaben und Ergebnis gegen das Vorjahr), und die ganze Übersicht steht auch auf deren Hof-PC (Strg+K). Wer sie nur dort haben will, stellt in den Einstellungen „Übersicht nur im Hof-PC“ an; im ESC-Menü bleiben dann nur die Einstellungen.
 
 BEDIENUNG
 ESC drücken und die Seite Betriebsübersicht öffnen (der erste Reiter). Oben mit den Reitern den Bereich wechseln:
 - AUFGABEN: was der Hof jetzt braucht, nach Dringlichkeit sortiert. Feldarbeiten stehen je Feld in der Reihenfolge, in der man sie wirklich macht - Stoppel häckseln, pflügen, grubbern, kalken, düngen, bestellen, und während des Wachstums Unkraut, walzen, düngen. Eine Zeile je Feld zeigt die ganze Folge und die Frucht, die gesät werden soll; ein Klick öffnet die einzelnen Schritte. Weitere Aufgaben: ernten, bestellen, walzen, kalken, düngen, Unkraut, Futter/Wasser/Stroh, volle Mist-, Gülle- und Milchlager, stehende oder volle Produktionen, volle Silos, beschädigte oder leere Maschinen, fehlende Anbaufläche und gute Preise. Erledigte Arbeit verschwindet von selbst; per Klick übernimmst du eine Aufgabe (dein Name steht bei allen Mitspielern).
 - FELDER: empfohlene nächste Frucht je Feld mit Fruchtfolge-Bonus, Bodengesundheit und Trend; Felder, die gegen eine knappe Frucht helfen, sind markiert. Klick auf ein Feld zeigt die volle Rangliste und einen Weitblick über mehrere Saisons.
-- TIERE: Bestände, Alter, Futterbedarf mit Reichweite, TMR-Zutaten.
+- TIERE: je Stall, was verkauft werden sollte und warum - „7 von 8 verkaufen, überzähliger Hahn“, Bestpreis, Leistung lässt nach, kein Platz. Legehennen und Milchkühe bleiben, solange sie leisten, Zuchttiere, tragende Tiere und Nachzucht bleiben stehen, fehlende Tiere stehen als Nachkauf da. Ein Klick auf den Stall öffnet sein Tiermenü zum Kaufen und Verkaufen. Dazu Futterbedarf mit Reichweite und TMR-Zutaten.
 - PRODUKTION: Rezepte mit Ein- und Ausgang; leere Eingänge werden markiert.
 - LAGER: Bestand aller eigenen Lager mit Maximal-Füllstand, Monatsbedarf, Reichweite und Markttipps.
 - FINANZEN (mit der Mod Agrar-Ökonomie): Betriebsvermögen, Konto, Kredit, Einnahmen, Ausgaben und Ergebnis, jeweils gegen denselben Zeitraum des Vorjahres.
@@ -49,13 +49,13 @@ Die Fruchtdaten kommen aus der geladenen Karte, eigene Kartenfrüchte sind also 
         <fr><![CDATA[Farm Overview réunit toute votre exploitation sur une page du menu ÉCHAP - champs, santé du sol, stockage, animaux, productions, tâches à faire et cultures de la carte.
 
 AVEC ÉCONOMIE AGRICOLE
-L'Aperçu de l'exploitation fonctionne seul. Si le mod Économie Agricole (Farm Economy) est aussi installé, la rubrique supplémentaire Finances affiche la comparaison annuelle (patrimoine net, revenus, dépenses et résultat par rapport à l'année précédente).
+L'Aperçu de l'exploitation fonctionne seul. Si le mod Économie Agricole (Farm Economy) est aussi installé, la rubrique supplémentaire Finances affiche la comparaison annuelle (patrimoine net, revenus, dépenses et résultat par rapport à l'année précédente), et tout l'aperçu se trouve aussi sur son PC de la ferme (Ctrl+K). Pour ne l'avoir que là, activez « Aperçu uniquement sur le PC de la ferme » dans les réglages ; le menu ÉCHAP ne garde alors que les réglages.
 
 UTILISATION
 Appuyez sur ÉCHAP et ouvrez la page Aperçu de l'exploitation (le premier onglet). Changez de rubrique avec les onglets du haut :
 - TÂCHES : ce dont l'exploitation a besoin maintenant, classé par urgence. Les travaux aux champs sont regroupés par champ dans l'ordre réel - broyer le chaume, labourer, déchaumer, chauler, fertiliser, semer, puis pendant la croissance désherber, rouler, fertiliser. Une ligne par champ montre toute la suite et la culture à semer ; un clic ouvre les étapes. Autres tâches : récolter, semer, rouler, chauler, fertiliser, désherber, fourrage/eau/paille, fumier, lisier et lait pleins, productions à l'arrêt ou pleines, silos pleins, machines abîmées ou vides, surface de culture manquante et bons prix. Le travail fait disparaît tout seul ; un clic prend une tâche (votre nom s'affiche pour tous les joueurs).
 - CHAMPS : culture suivante conseillée par champ avec bonus de rotation, santé du sol et tendance ; les champs qui aident contre une culture bientôt épuisée sont marqués. Un clic sur un champ affiche le classement complet et une projection sur plusieurs saisons.
-- ANIMAUX : cheptels, âge, besoin en fourrage avec autonomie, ingrédients de la ration (TMR).
+- ANIMAUX : pour chaque bâtiment, ce qu'il faut vendre et pourquoi - « vendre 7 sur 8, coq en trop », meilleur prix, production en baisse, plus de place. Les poules pondeuses et les vaches laitières restent tant qu'elles produisent, les reproducteurs, les femelles gestantes et la relève sont gardés, et les animaux manquants apparaissent comme achat. Un clic sur le bâtiment ouvre son menu des animaux pour acheter et vendre. Avec le besoin en fourrage, l'autonomie et les ingrédients de la ration (TMR).
 - PRODUCTION : recettes avec entrées et sorties ; les entrées vides sont signalées.
 - STOCKAGE : stock de tous vos stockages avec la capacité, besoin mensuel, autonomie et conseils de vente.
 - FINANCES (avec le mod Économie Agricole) : patrimoine net, solde, prêt, revenus, dépenses et résultat, comparés à la même période de l'année précédente.
@@ -108,6 +108,11 @@ Les données des cultures sont lues depuis la carte chargée, les cultures propr
             <en>Settings</en>
             <de>Einstellungen</de>
             <fr>Réglages</fr>
+        </text>
+        <text name="fa_set_nurhofpc">
+            <en>Overview only on the farm PC (Ctrl+K)</en>
+            <de>Übersicht nur im Hof-PC (Strg+K)</de>
+            <fr>Aperçu uniquement sur le PC de la ferme (Ctrl+K)</fr>
         </text>
         <text name="fa_set_section_tasks">
             <en>FIELD WORK IN THE TASK LIST</en>
@@ -1451,6 +1456,216 @@ Les données des cultures sont lues depuis la carte chargée, les cultures propr
             <de>Dauerkultur - Bäume pflanzen</de>
             <fr>Culture pérenne - planter des arbres</fr>
         </text>
+        <text name="fa_herd_sell">
+            <en>%d animals to sell = %s</en>
+            <de>%d Tiere zum Verkauf = %s</de>
+            <fr>%d animaux à vendre = %s</fr>
+        </text>
+        <text name="fa_h_agehealth">
+            <en>AGE, HEALTH</en>
+            <de>ALTER, GESUNDHEIT</de>
+            <fr>ÂGE, SANTÉ</fr>
+        </text>
+        <text name="fa_h_advice">
+            <en>ADVICE</en>
+            <de>EMPFEHLUNG</de>
+            <fr>CONSEIL</fr>
+        </text>
+        <text name="fa_stall_ok">
+            <en>nothing to sell</en>
+            <de>nichts zu verkaufen</de>
+            <fr>rien à vendre</fr>
+        </text>
+        <text name="fa_stall_sell">
+            <en>sell %d (%s)</en>
+            <de>%d verkaufen (%s)</de>
+            <fr>vendre %d (%s)</fr>
+        </text>
+        <text name="fa_stall_buy">
+            <en>buy animals</en>
+            <de>Nachkauf nötig</de>
+            <fr>achat nécessaire</fr>
+        </text>
+        <text name="fa_stall_full">
+            <en>full, all needed</en>
+            <de>voll, alle gebraucht</de>
+            <fr>plein, tous utiles</fr>
+        </text>
+        <text name="fa_stall_open">
+            <en>open ›</en>
+            <de>öffnen ›</de>
+            <fr>ouvrir ›</fr>
+        </text>
+        <text name="fa_unit_mo_short">
+            <en>mo.</en>
+            <de>Mon.</de>
+            <fr>mois</fr>
+        </text>
+        <text name="fa_sell_of">
+            <en>%d of %d</en>
+            <de>%d von %d</de>
+            <fr>%d sur %d</fr>
+        </text>
+        <text name="fa_keep_line">
+            <en>keep: %s</en>
+            <de>behalten: %s</de>
+            <fr>garder : %s</fr>
+        </text>
+        <text name="fa_buy_line">
+            <en>buy: %d x %s</en>
+            <de>nachkaufen: %d x %s</de>
+            <fr>acheter : %d x %s</fr>
+        </text>
+        <text name="fa_g_platz">
+            <en>no space</en>
+            <de>zu wenig Platz</de>
+            <fr>pas de place</fr>
+        </text>
+        <text name="fa_g_maennchen">
+            <en>surplus male animal</en>
+            <de>überzähliges männliches Tier</de>
+            <fr>mâle en trop</fr>
+        </text>
+        <text name="fa_g_maennchen_COW">
+            <en>surplus bull</en>
+            <de>überzähliger Bulle</de>
+            <fr>taureau en trop</fr>
+        </text>
+        <text name="fa_g_maennchen_PIG">
+            <en>surplus boar</en>
+            <de>überzähliger Eber</de>
+            <fr>verrat en trop</fr>
+        </text>
+        <text name="fa_g_maennchen_SHEEP">
+            <en>surplus ram</en>
+            <de>überzähliger Bock</de>
+            <fr>bélier en trop</fr>
+        </text>
+        <text name="fa_g_maennchen_CHICKEN">
+            <en>surplus rooster</en>
+            <de>überzähliger Hahn</de>
+            <fr>coq en trop</fr>
+        </text>
+        <text name="fa_g_maennchen_HORSE">
+            <en>surplus stallion</en>
+            <de>überzähliger Hengst</de>
+            <fr>étalon en trop</fr>
+        </text>
+        <text name="fa_g_leistung">
+            <en>output dropping</en>
+            <de>Leistung lässt nach</de>
+            <fr>production en baisse</fr>
+        </text>
+        <text name="fa_g_drueber">
+            <en>past best price</en>
+            <de>über dem Höchstpreis</de>
+            <fr>au-delà du meilleur prix</fr>
+        </text>
+        <text name="fa_g_fenster">
+            <en>best price now</en>
+            <de>bester Preis jetzt</de>
+            <fr>meilleur prix</fr>
+        </text>
+        <text name="fa_b_leistung">
+            <en>producing</en>
+            <de>in Leistung</de>
+            <fr>en production</fr>
+        </text>
+        <text name="fa_b_nachwuchs">
+            <en>coming into production</en>
+            <de>kommt in Leistung</de>
+            <fr>entre en production</fr>
+        </text>
+        <text name="fa_b_zucht">
+            <en>breeding animals</en>
+            <de>Zuchttiere</de>
+            <fr>reproducteurs</fr>
+        </text>
+        <text name="fa_b_ersatz">
+            <en>spare breeder</en>
+            <de>Ersatz-Zuchttier</de>
+            <fr>reproducteur de réserve</fr>
+        </text>
+        <text name="fa_b_zuchtJung">
+            <en>future breeder</en>
+            <de>künftiges Zuchttier</de>
+            <fr>futur reproducteur</fr>
+        </text>
+        <text name="fa_b_tragend">
+            <en>pregnant</en>
+            <de>tragend</de>
+            <fr>gestantes</fr>
+        </text>
+        <text name="fa_b_jung">
+            <en>still growing</en>
+            <de>wachsen noch</de>
+            <fr>en croissance</fr>
+        </text>
+        <text name="fa_b_ersatzFehlt">
+            <en>until replaced</en>
+            <de>bis Ersatz da ist</de>
+            <fr>jusqu'au remplacement</fr>
+        </text>
+        <text name="fa_b_pferd">
+            <en>horses</en>
+            <de>Pferde</de>
+            <fr>chevaux</fr>
+        </text>
+        <text name="fa_buy_maennchen">
+            <en>no breeding male</en>
+            <de>kein männliches Zuchttier</de>
+            <fr>aucun mâle reproducteur</fr>
+        </text>
+        <text name="fa_buy_maennchen_COW">
+            <en>no breeding bull</en>
+            <de>kein Deckbulle</de>
+            <fr>aucun taureau reproducteur</fr>
+        </text>
+        <text name="fa_buy_maennchen_PIG">
+            <en>no breeding boar</en>
+            <de>kein Zuchteber</de>
+            <fr>aucun verrat reproducteur</fr>
+        </text>
+        <text name="fa_buy_maennchen_SHEEP">
+            <en>no breeding ram</en>
+            <de>kein Zuchtbock</de>
+            <fr>aucun bélier reproducteur</fr>
+        </text>
+        <text name="fa_buy_maennchen_CHICKEN">
+            <en>no rooster</en>
+            <de>kein Hahn</de>
+            <fr>aucun coq</fr>
+        </text>
+        <text name="fa_buy_maennchen_HORSE">
+            <en>no stallion</en>
+            <de>kein Hengst</de>
+            <fr>aucun étalon</fr>
+        </text>
+        <text name="fa_buy_ersatz">
+            <en>replace low output</en>
+            <de>Ersatz für nachlassende</de>
+            <fr>remplacer la baisse</fr>
+        </text>
+        <text name="fa_buy_frei">
+            <en>free places, no offspring</en>
+            <de>Plätze frei, kein Nachwuchs</de>
+            <fr>places libres, pas de petits</fr>
+        </text>
+        <text name="fa_t_sellplan">
+            <en>Sell animals: %s</en>
+            <de>Tiere verkaufen: %s</de>
+            <fr>Vendre des animaux : %s</fr>
+        </text>
+        <text name="fa_t_buyanimals">
+            <en>Buy animals: %s</en>
+            <de>Tiere nachkaufen: %s</de>
+            <fr>Acheter des animaux : %s</fr>
+        </text>
+        <text name="fa_d_allneeded">
+            <en>all animals needed, expand the barn</en>
+            <de>alle Tiere gebraucht, Stall erweitern</de>
+            <fr>tous les animaux sont utiles, agrandir l'étable</fr>
+        </text>
     </l10n>
 
 
@@ -1466,6 +1681,7 @@ Les données des cultures sont lues depuis la carte chargée, les cultures propr
         <sourceFile filename="scripts/FruitMemoryEvent.lua"/>
         <sourceFile filename="scripts/Bodengesundheit.lua"/>
         <sourceFile filename="scripts/StorageAnalyzer.lua"/>
+        <sourceFile filename="scripts/AnimalSalePlan.lua"/>
         <sourceFile filename="scripts/AnimalAnalyzer.lua"/>
         <sourceFile filename="scripts/ProductionAnalyzer.lua"/>
         <sourceFile filename="scripts/RecommendationEngine.lua"/>

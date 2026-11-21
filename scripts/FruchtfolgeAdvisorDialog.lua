@@ -541,8 +541,16 @@ end
 
 -- Echter Klick (feuert auch auf die bereits ausgewaehlte Zeile): offenes Feld zuklappen.
 -- Fruechte-Zeile unter dem Index umschalten (nur bei echten Klicks aufgerufen).
+function FruchtfolgeAdvisorDialog:klickDoppelt(index)
+    local jetzt = g_time or 0
+    local alt = self._letzterKlick
+    self._letzterKlick = { index = index, tab = self.tab, zeit = jetzt }
+    return alt ~= nil and alt.index == index and alt.tab == self.tab and jetzt - alt.zeit < 60
+end
+
 function FruchtfolgeAdvisorDialog:toggleCropAt(index)
     if type(index) ~= "number" then return end
+    if self:klickDoppelt(index) then return end
     local r = (self.rows or {})[index]
     if r ~= nil and r.cropName ~= nil then self:toggleCrop(r.cropName) end
 end
@@ -560,6 +568,14 @@ function FruchtfolgeAdvisorDialog:onListClick(list, section, index)
     if self.tab == FruchtfolgeAdvisorDialog.CROPS_TAB then
         if type(index) ~= "number" and list ~= nil then index = list.selectedIndex end
         self:toggleCropAt(index)
+        return
+    end
+    if self.tab == 3 then
+        if type(index) ~= "number" and list ~= nil then index = list.selectedIndex end
+        local r = (self.rows or {})[index]
+        if r ~= nil and r.stall ~= nil and FruchtfolgeAdvisor.stallOeffnen ~= nil then
+            FruchtfolgeAdvisor.stallOeffnen(r.stall)
+        end
         return
     end
     if self.tab ~= 1 then return end
@@ -591,6 +607,7 @@ function FruchtfolgeAdvisorDialog:cycleTaskAt(index)
     if type(index) ~= "number" then return end
     local r = (self.rows or {})[index]
     if r == nil then return end
+    if self:klickDoppelt(index) then return end
     -- Kopfzeile eines Feldes: Schritte ein- oder ausklappen. Alles ist
     -- standardmaessig offen; eingeklappt wird nur, was man abgehakt hat.
     if r.feldBlock ~= nil then

@@ -21,6 +21,7 @@ files = [
     "scripts/FruitMemoryEvent.lua",
     "scripts/Bodengesundheit.lua",
     "scripts/StorageAnalyzer.lua",
+    "scripts/AnimalSalePlan.lua",
     "scripts/AnimalAnalyzer.lua",
     "scripts/ProductionAnalyzer.lua",
     "scripts/RecommendationEngine.lua",

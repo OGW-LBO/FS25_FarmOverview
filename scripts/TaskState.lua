@@ -112,6 +112,8 @@ function TaskState.cycle(key)
     if st == "taken" then
         neu = TaskState.STATUS_OPEN
     end
+    Logging.info("[FarmOverview] Aufgabe %s: %s -> %s", tostring(key), tostring(st),
+        neu == TaskState.STATUS_TAKEN and "taken" or "open")
     TaskState.request(key, neu, TaskState.localName())
 end
 

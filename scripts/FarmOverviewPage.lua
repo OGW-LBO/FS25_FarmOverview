@@ -29,12 +29,80 @@ FarmOverviewPage.versuche = 0
 FarmOverviewPage.fertig   = false
 
 local modDirectory = g_currentModDirectory
+local modName      = g_currentModName
+local modSettings  = g_currentModSettingsDirectory
+
+FarmOverviewPage.nurHofPC    = false
+FarmOverviewPage.prefGeladen = false
 
 local function L(key, fallback)
     if FruchtfolgeAdvisor ~= nil and FruchtfolgeAdvisor.L ~= nil then
         return FruchtfolgeAdvisor.L(key, fallback)
     end
     return fallback or key
+end
+
+local function prefOrdner()
+    local dir = modSettings
+    if (dir == nil or dir == "") and getUserProfileAppPath ~= nil then
+        dir = getUserProfileAppPath() .. "modSettings/" .. (modName or "FS25_FarmOverview") .. "/"
+    end
+    return dir
+end
+
+local function prefDatei()
+    local dir = prefOrdner()
+    if dir == nil then
+        return nil
+    end
+    return dir .. "anzeige.xml"
+end
+
+function FarmOverviewPage.prefLaden()
+    if FarmOverviewPage.prefGeladen then
+        return
+    end
+    FarmOverviewPage.prefGeladen = true
+    local pfad = prefDatei()
+    if pfad == nil or fileExists == nil or not fileExists(pfad) then
+        return
+    end
+    local xf = loadXMLFile("faAnzeige", pfad)
+    if xf == nil or xf == 0 then
+        return
+    end
+    FarmOverviewPage.nurHofPC = getXMLBool(xf, "farmOverview#nurHofPC") == true
+    delete(xf)
+end
+
+function FarmOverviewPage.prefSpeichern()
+    local pfad = prefDatei()
+    if pfad == nil then
+        return
+    end
+    if createFolder ~= nil then
+        createFolder(prefOrdner())
+    end
+    local xf = createXMLFile("faAnzeige", pfad, "farmOverview")
+    if xf == nil or xf == 0 then
+        return
+    end
+    setXMLBool(xf, "farmOverview#nurHofPC", FarmOverviewPage.nurHofPC == true)
+    saveXMLFile(xf)
+    delete(xf)
+end
+
+function FarmOverviewPage.hofPcDa()
+    if FinanceBridge == nil or FinanceBridge.env == nil then
+        return false
+    end
+    local env = FinanceBridge.env()
+    return env ~= nil and type(env.AOHofPC) == "table" and type(env.AOHofPC.umschalten) == "function"
+end
+
+function FarmOverviewPage.nurImHofPC()
+    FarmOverviewPage.prefLaden()
+    return FarmOverviewPage.nurHofPC == true and FarmOverviewPage.hofPcDa()
 end
 
 -- Methoden, die an der Basisklasse des alten Fensters haengen, oder
@@ -142,14 +210,8 @@ function FarmOverviewPage:onFrameOpen()
         self._iconGesetzt = true
     end
 
-    -- Bereich Finanzen nur, wenn FarmEconomy geladen ist (liefert die Zahlen)
     local finanzen = FinanceBridge ~= nil and FinanceBridge.isAvailable()
-    if self.btnTab8 ~= nil and self.btnTab8.setVisible ~= nil then
-        self.btnTab8:setVisible(finanzen)
-        if self.faTabBox ~= nil and self.faTabBox.invalidateLayout ~= nil then
-            self.faTabBox:invalidateLayout()
-        end
-    end
+    self:reiterAnpassen()
     if finanzen then
         FinanceBridge.request()
     elseif self.tab == FruchtfolgeAdvisorDialog.FINANCE_TAB then
@@ -166,6 +228,59 @@ function FarmOverviewPage:onFrameOpen()
     -- bis zur naechsten Auswertung warten (gemeldet 06.10.2026).
     self._liveTimer = math.max(0, FarmOverviewPage.LIVE_INTERVALL - 1000)
     self:setTab(self.tab or 1)
+end
+
+local function sichtbar(element, an)
+    if element ~= nil and element.setVisible ~= nil then
+        element:setVisible(an == true)
+    end
+end
+
+function FarmOverviewPage:reiterAnpassen()
+    local nur = FarmOverviewPage.nurImHofPC()
+    local finanzen = FinanceBridge ~= nil and FinanceBridge.isAvailable()
+    for _, nr in ipairs({ 5, 1, 3, 4, 2 }) do
+        sichtbar(self["btnTab" .. nr], not nur)
+    end
+    sichtbar(self.btnTab8, finanzen and not nur)
+    if self.faTabBox ~= nil and self.faTabBox.invalidateLayout ~= nil then
+        self.faTabBox:invalidateLayout()
+    end
+    sichtbar(self.rowNurHofPC, FarmOverviewPage.hofPcDa())
+    if nur then
+        self.tab = FruchtfolgeAdvisorDialog.SETTINGS_TAB
+    end
+end
+
+function FarmOverviewPage:setTab(t)
+    if FarmOverviewPage.nurImHofPC() then
+        t = FruchtfolgeAdvisorDialog.SETTINGS_TAB
+    end
+    FruchtfolgeAdvisorDialog.setTab(self, t)
+end
+
+function FarmOverviewPage:buildSettingsControls()
+    FruchtfolgeAdvisorDialog.buildSettingsControls(self)
+    FarmOverviewPage.prefLaden()
+    self:setupBool(self.chkNurHofPC, "nurHofPC", FarmOverviewPage.nurHofPC)
+end
+
+function FarmOverviewPage:onClickCheckbox(state, element)
+    local key = self.chkKey ~= nil and self.chkKey[element] or nil
+    if key ~= "nurHofPC" then
+        return FruchtfolgeAdvisorDialog.onClickCheckbox(self, state, element)
+    end
+    local an
+    if element ~= nil and element.getIsChecked ~= nil then
+        an = element:getIsChecked()
+    else
+        an = (state == 2 or state == true)
+    end
+    FarmOverviewPage.nurHofPC = an == true
+    FarmOverviewPage.prefSpeichern()
+    Logging.info(FarmOverviewPage.LOG .. "Uebersicht nur im Hof-PC: %s.", FarmOverviewPage.nurHofPC and "an" or "aus")
+    self:reiterAnpassen()
+    self:updateTabHighlight()
 end
 
 function FarmOverviewPage:onFrameClose()
