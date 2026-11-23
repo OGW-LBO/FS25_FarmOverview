@@ -35,6 +35,11 @@ Auf einem Dedicated Server gehoert sie in dessen Mods-Ordner.
 
 Version 1.2.0.0, gebaut gegen descVersion 115.
 
+## Discord
+
+Fragen, Fehler und Ideen zur Mod am besten auf unserem Discord-Server
+"Furchenpfuscher": https://discord.gg/vsAhgaf43w
+
 ## Lizenz
 
 Alle Rechte vorbehalten, Einzelheiten in LICENSE.txt. Der Quelltext liegt
